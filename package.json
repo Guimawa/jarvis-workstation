@@ -3,14 +3,23 @@
   "version": "2.0.0",
   "description": "BUREAU ULTRA INSTINCT - Dashboard IA complet avec génération de code",
   "type": "module",
-  "main": "index.js",
+  "main": "electron/main.cjs",
+  "homepage": "./",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "generate": "node jarvis-cli-main.js",
-    "dashboard": "node jarvis-cli-main.js dashboard"
+    "dashboard": "node jarvis-cli-main.js dashboard",
+    "electron": "concurrently \"npm run dev\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron-dev": "cross-env NODE_ENV=development concurrently \"npm run dev\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron-build": "npm run build && npm run export && electron .",
+    "export": "next export",
+    "build-electron": "npm run build && electron-builder",
+    "build-win": "npm run build && electron-builder --win",
+    "build-mac": "npm run build && electron-builder --mac",
+    "build-linux": "npm run build && electron-builder --linux"
   },
   "keywords": [
     "ai",
@@ -56,6 +65,11 @@
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "autoprefixer": "^10.4.21",
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1",
+    "concurrently": "^8.2.2",
+    "wait-on": "^7.2.0",
+    "cross-env": "^7.0.3",
     "eslint": "^8.0.0",
     "eslint-config-next": "^14.0.0",
     "patch-package": "^8.0.0",
@@ -65,5 +79,53 @@
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "build": {
+    "appId": "com.guima.jarvis-ultra-instinct",
+    "productName": "JARVIS Ultra Instinct",
+    "directories": {
+      "output": "dist-electron"
+    },
+    "files": [
+      "out/**/*",
+      "electron/**/*",
+      "node_modules/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "public/",
+        "to": "public/"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ],
+      "icon": "public/icon.ico",
+      "artifactName": "JARVIS-Ultra-Instinct-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "deleteAppDataOnUninstall": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "JARVIS Ultra Instinct"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "public/icon.icns"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "public/icon.png"
+    }
   }
 }
