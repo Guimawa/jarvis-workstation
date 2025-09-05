@@ -4,7 +4,12 @@ import { useEffect, useState } from "react";
 import TestResultItem from "@/components/ui/TestResultItem";
 
 export default function TestsScreen() {
-  const [tests, setTests] = useState([]);
+  const [tests, setTests] = useState<Array<{
+    id: string;
+    name: string;
+    status: string;
+    duration?: number;
+  }>>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -16,7 +21,7 @@ export default function TestsScreen() {
       });
   }, []);
 
-  const handleRerun = async (id) => {
+  const handleRerun = async (id: string) => {
     await fetch(`/api/tests/${id}/rerun`, { method: "POST" });
     // Optionnel : refetch ou update local
   };

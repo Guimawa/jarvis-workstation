@@ -6,7 +6,7 @@ import NextLink from 'next/link';
 import {memo} from 'react';
 import cn from 'classnames';
 import {IconNavArrow} from './Icon/IconNavArrow';
-import type {RouteMeta} from './Layout/getRouteMeta';
+import type {RouteMeta} from '@/src/components/Layout/getRouteMeta';
 
 export type DocsPageFooterProps = Pick<
   RouteMeta,

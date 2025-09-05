@@ -5,7 +5,16 @@ import Link from "next/link";
 import { FolderOpen, Eye, Code, Download } from "lucide-react";
 
 export default function ProjectsPage() {
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState<Array<{
+    id: string;
+    name: string;
+    description: string;
+    type: string;
+    status: string;
+    tech: string[];
+    preview: string;
+    source: string;
+  }>>([]);
 
   useEffect(() => {
     // Simuler le chargement des projets
@@ -87,7 +96,16 @@ export default function ProjectsPage() {
   );
 }
 
-function ProjectCard({ project }) {
+function ProjectCard({ project }: { project: {
+  id: string;
+  name: string;
+  description: string;
+  type: string;
+  status: string;
+  tech: string[];
+  preview: string;
+  source: string;
+} }) {
   const getStatusColor = () => {
     switch (project.status) {
       case "ready":

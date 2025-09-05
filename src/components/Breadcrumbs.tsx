@@ -4,7 +4,7 @@
 
 import {Fragment} from 'react';
 import Link from 'next/link';
-import type {RouteItem} from 'components/Layout/getRouteMeta';
+import type {RouteItem} from '@/src/components/Layout/getRouteMeta';
 
 function Breadcrumbs({breadcrumbs}: {breadcrumbs: RouteItem[]}) {
   return (

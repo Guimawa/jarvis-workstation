@@ -280,7 +280,7 @@ export default HandshakeDashboardTemplate;`,
         <div className="flex items-center justify-between bg-gray-800 px-4 py-2">
           <span className="text-sm text-gray-400">{activeTab}</span>
           <button
-            onClick={() => copyToClipboard(files[activeTab].content, activeTab)}
+            onClick={() => copyToClipboard(files[activeTab as keyof typeof files]?.content || '', activeTab)}
             className="flex items-center gap-1 text-sm text-gray-400 hover:text-white transition-colors"
           >
             <Copy size={16} />
@@ -290,8 +290,8 @@ export default HandshakeDashboardTemplate;`,
 
         <div className="p-4">
           <pre className="text-sm text-gray-300 overflow-x-auto">
-            <code className={`language-${files[activeTab].language}`}>
-              {files[activeTab].content}
+            <code className={`language-${files[activeTab as keyof typeof files]?.language || 'javascript'}`}>
+              {files[activeTab as keyof typeof files]?.content || ''}
             </code>
           </pre>
         </div>
