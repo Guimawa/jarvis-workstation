@@ -15,7 +15,7 @@ export default function TemplatesScreen() {
       </section>
       <section>
         <h2 className="text-xl font-semibold mb-4">Aperçu Live</h2>
-        <LivePreview component={compiledCode} />
+        <LivePreview code={compiledCode} />
       </section>
     </div>
   );

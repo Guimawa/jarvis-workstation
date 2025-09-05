@@ -7,7 +7,7 @@ import {Footer} from './Footer';
 import {HomeContent} from './HomeContent';
 import cn from 'classnames';
 import {DocsPageFooter} from 'components/DocsFooter';
-import type {RouteItem} from 'components/Layout/getRouteMeta';
+import type {RouteItem} from './getRouteMeta';
 import type {TocItem} from 'components/MDX/TocContext';
 import PageHeading from 'components/PageHeading';
 import {Seo} from 'components/Seo';

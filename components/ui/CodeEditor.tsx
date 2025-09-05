@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import { Copy, Download, Maximize2, Minimize2 } from "lucide-react";
 import { copyToClipboard, downloadFile } from "../../lib/utils";
 
-export default function CodeEditor() {
+export default function CodeEditor({ onCodeChange }: { onCodeChange?: (code: string) => void }) {
   const { tabs, activeTab, updateTabContent, settings } = useAppContext();
   const [isFullscreen, setIsFullscreen] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -20,6 +20,7 @@ export default function CodeEditor() {
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     updateTabContent(activeTab, e.target.value);
+    onCodeChange?.(e.target.value);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {

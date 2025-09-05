@@ -195,15 +195,15 @@ export default function GenerateHandshakePage() {
               <div className="space-y-4">
                 <div>
                   <h3 className="font-semibold text-lg">
-                    {generatedProject.name}
+                    {(generatedProject as any)?.name || 'Projet généré'}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    {generatedProject.description}
+                    {(generatedProject as any)?.description || 'Description du projet'}
                   </p>
                 </div>
 
                 <div className="flex flex-wrap gap-2">
-                  {generatedProject.tech.map((tech, index) => (
+                  {((generatedProject as any)?.tech || []).map((tech: any, index: number) => (
                     <span
                       key={index}
                       className="text-xs bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded"
@@ -214,13 +214,13 @@ export default function GenerateHandshakePage() {
                 </div>
 
                 <div className="flex gap-2">
-                  <Link href={generatedProject.preview}>
+                  <Link href={(generatedProject as any)?.preview || '#'}>
                     <button className="flex items-center gap-2 bg-accent-3 text-white px-4 py-2 rounded-lg hover:shadow-glow transition-all">
                       <Eye size={16} />
                       Preview
                     </button>
                   </Link>
-                  <Link href={generatedProject.source}>
+                  <Link href={(generatedProject as any)?.source || '#'}>
                     <button className="flex items-center gap-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
                       <Download size={16} />
                       Code Source

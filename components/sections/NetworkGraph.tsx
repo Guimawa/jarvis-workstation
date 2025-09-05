@@ -413,7 +413,7 @@ const NetworkGraph = () => {
             });
             
             if (closestNode) {
-              handleNodeClick(closestNode.id);
+              handleNodeClick((closestNode as any)?.id);
             }
           }}
         />
