@@ -12,17 +12,20 @@
     "lint": "next lint",
     "generate": "node jarvis-cli-main.js",
     "dashboard": "node jarvis-cli-main.js dashboard",
-    "electron": "node scripts/start-electron-dev.js",
-    "electron-dev": "node scripts/start-electron-dev.js",
+    "electron": "node scripts/start-electron-dev.cjs",
+    "electron-dev": "node scripts/start-electron-dev.cjs",
     "electron-build": "cross-env NODE_ENV=production electron .",
     "export": "next export",
-    "build-electron": "node scripts/build-electron.js",
-    "build-win": "cross-env NODE_ENV=production node scripts/build-electron.js",
-    "build-mac": "cross-env NODE_ENV=production node scripts/build-electron.js",
-    "build-linux": "cross-env NODE_ENV=production node scripts/build-electron.js",
+    "build-electron": "node scripts/build-electron.cjs",
+    "build-win": "cross-env NODE_ENV=production node scripts/build-electron.cjs --platform=win32",
+    "build-win64": "cross-env NODE_ENV=production node scripts/build-electron.cjs --platform=win32 --arch=x64",
+    "build-win32": "cross-env NODE_ENV=production node scripts/build-electron.cjs --platform=win32 --arch=ia32",
+    "build-mac": "cross-env NODE_ENV=production node scripts/build-electron.cjs --platform=darwin",
+    "build-linux": "cross-env NODE_ENV=production node scripts/build-electron.cjs --platform=linux",
     "install-deps": "npm install",
     "setup": "npm install && echo Setup terminé !",
-    "clean": "rimraf out dist-electron .next"
+    "clean": "node scripts/clean-project.cjs",
+    "clean-auto": "node scripts/clean-project.cjs --auto"
   },
   "keywords": [
     "ai",
@@ -112,10 +115,20 @@
             "x64",
             "ia32"
           ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
         }
       ],
       "icon": "public/icon.ico",
-      "artifactName": "JARVIS-Ultra-Instinct-Setup-${version}.${ext}"
+      "artifactName": "JARVIS-Ultra-Instinct-${os}-${arch}-Setup-${version}.${ext}",
+      "publisherName": "JARVIS Ultra Instinct",
+      "verifyUpdateCodeSignature": false,
+      "requestedExecutionLevel": "asInvoker"
     },
     "nsis": {
       "oneClick": false,
