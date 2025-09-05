@@ -1,0 +1,233 @@
+{
+  "memory": {
+    "generations": [
+      [
+        "mem_1757037004157_9nzl33wdf",
+        {
+          "id": "mem_1757037004157_9nzl33wdf",
+          "timestamp": 1757037004157,
+          "type": "generation",
+          "data": {
+            "type": "component",
+            "name": "SimpleButton",
+            "description": "Un bouton simple",
+            "domain": "react",
+            "result": {
+              "type": "generation",
+              "content": "export default function SimpleButton() {\n  return (\n    <div className=\"p-4\">\n      <h2>SimpleButton</h2>\n      <p>Un bouton simple</p>\n    </div>\n  );\n}",
+              "quality": 0.8,
+              "strategy": "direct_generation",
+              "metadata": {
+                "responseTime": 1000,
+                "tokens": 150
+              }
+            },
+            "analysis": {
+              "type": "component",
+              "complexity": 0.6,
+              "confidence": 0.8999999999999999,
+              "domain": "react",
+              "hasCustomRequirements": false,
+              "timestamp": 1757037004156,
+              "similar": []
+            },
+            "strategy": "Génération Directe",
+            "success": true
+          },
+          "tags": [
+            "component",
+            "react"
+          ],
+          "context": {},
+          "ttl": 1759629004157
+        }
+      ],
+      [
+        "mem_1757037004163_k30smh4hh",
+        {
+          "id": "mem_1757037004163_k30smh4hh",
+          "timestamp": 1757037004163,
+          "type": "generation",
+          "data": {
+            "type": "component",
+            "name": "ComplexDashboard",
+            "description": "Un dashboard complexe avec plusieurs sections et interactions",
+            "domain": "react",
+            "customRequirements": [
+              "responsive",
+              "dark-mode",
+              "animations"
+            ],
+            "dependencies": [
+              "react-router",
+              "framer-motion",
+              "recharts"
+            ],
+            "result": {
+              "type": "generation",
+              "content": "export default function ComplexDashboard() {\n  return (\n    <div className=\"p-4\">\n      <h2>ComplexDashboard</h2>\n      <p>Un dashboard complexe avec plusieurs sections et interactions</p>\n    </div>\n  );\n}",
+              "quality": 0.8,
+              "strategy": "direct_generation",
+              "metadata": {
+                "responseTime": 1000,
+                "tokens": 150
+              }
+            },
+            "analysis": {
+              "type": "component",
+              "complexity": 1,
+              "confidence": 0.95,
+              "domain": "react",
+              "hasCustomRequirements": true,
+              "timestamp": 1757037004162,
+              "similar": [
+                {
+                  "id": "mem_1757037004157_9nzl33wdf",
+                  "timestamp": 1757037004157,
+                  "type": "generation",
+                  "data": {
+                    "type": "component",
+                    "name": "SimpleButton",
+                    "description": "Un bouton simple",
+                    "domain": "react",
+                    "result": {
+                      "type": "generation",
+                      "content": "export default function SimpleButton() {\n  return (\n    <div className=\"p-4\">\n      <h2>SimpleButton</h2>\n      <p>Un bouton simple</p>\n    </div>\n  );\n}",
+                      "quality": 0.8,
+                      "strategy": "direct_generation",
+                      "metadata": {
+                        "responseTime": 1000,
+                        "tokens": 150
+                      }
+                    },
+                    "analysis": {
+                      "type": "component",
+                      "complexity": 0.6,
+                      "confidence": 0.8999999999999999,
+                      "domain": "react",
+                      "hasCustomRequirements": false,
+                      "timestamp": 1757037004156,
+                      "similar": []
+                    },
+                    "strategy": "Génération Directe",
+                    "success": true
+                  },
+                  "tags": [
+                    "component",
+                    "react"
+                  ],
+                  "context": {},
+                  "ttl": 1759629004157
+                }
+              ]
+            },
+            "strategy": "Génération Directe",
+            "success": true
+          },
+          "tags": [
+            "component",
+            "react"
+          ],
+          "context": {},
+          "ttl": 1759629004163
+        }
+      ],
+      [
+        "mem_1757037004165_kh83ioy4d",
+        {
+          "id": "mem_1757037004165_kh83ioy4d",
+          "timestamp": 1757037004165,
+          "type": "generation",
+          "data": {
+            "type": "invalid",
+            "name": "FailingComponent",
+            "description": "Une requête qui va échouer",
+            "result": {
+              "type": "generation",
+              "content": "// Une requête qui va échouer",
+              "quality": 0.8,
+              "strategy": "direct_generation",
+              "metadata": {
+                "responseTime": 1000,
+                "tokens": 150
+              }
+            },
+            "analysis": {
+              "type": "invalid",
+              "complexity": 0.8,
+              "confidence": 0.7999999999999999,
+              "domain": "general",
+              "hasCustomRequirements": false,
+              "timestamp": 1757037004164,
+              "similar": []
+            },
+            "strategy": "Génération Directe",
+            "success": true
+          },
+          "tags": [
+            "invalid"
+          ],
+          "context": {},
+          "ttl": 1759629004165
+        }
+      ]
+    ],
+    "contexts": [],
+    "patterns": [],
+    "performance": [],
+    "feedback": [],
+    "metadata": []
+  },
+  "indexes": {
+    "byType": [
+      [
+        "generation",
+        [
+          "mem_1757037004157_9nzl33wdf",
+          "mem_1757037004163_k30smh4hh",
+          "mem_1757037004165_kh83ioy4d"
+        ]
+      ]
+    ],
+    "byTimestamp": [
+      [
+        488065,
+        [
+          "mem_1757037004157_9nzl33wdf",
+          "mem_1757037004163_k30smh4hh",
+          "mem_1757037004165_kh83ioy4d"
+        ]
+      ]
+    ],
+    "byTags": [
+      [
+        "component",
+        [
+          "mem_1757037004157_9nzl33wdf",
+          "mem_1757037004163_k30smh4hh"
+        ]
+      ],
+      [
+        "react",
+        [
+          "mem_1757037004157_9nzl33wdf",
+          "mem_1757037004163_k30smh4hh"
+        ]
+      ],
+      [
+        "invalid",
+        [
+          "mem_1757037004165_kh83ioy4d"
+        ]
+      ]
+    ],
+    "byContext": []
+  },
+  "state": {
+    "isInitialized": true,
+    "lastSave": 1757037004174,
+    "totalEntries": 3,
+    "memoryUsage": 0
+  },
+  "timestamp": 1757037004182
+}

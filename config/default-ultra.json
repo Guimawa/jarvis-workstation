@@ -1,0 +1,463 @@
+{
+  "app": {
+    "name": "Jarvis Ultra Instinct",
+    "version": "2.0.0",
+    "description": "Assistant intelligent de génération de code avec apprentissage automatique",
+    "author": "Jarvis Expert",
+    "license": "MIT",
+    "environment": "development"
+  },
+  
+  "server": {
+    "port": 3000,
+    "host": "0.0.0.0",
+    "timeout": 30000,
+    "maxRequestSize": "50mb",
+    "enableCompression": true,
+    "enableHelmet": true,
+    "enableCors": true,
+    "corsOptions": {
+      "origin": "*",
+      "credentials": true,
+      "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+      "allowedHeaders": ["Content-Type", "Authorization", "X-Requested-With"]
+    }
+  },
+  
+  "logging": {
+    "level": "info",
+    "format": "json",
+    "outputs": ["console", "file"],
+    "directory": "./logs",
+    "maxFileSize": 10485760,
+    "maxFiles": 5,
+    "enableColors": true,
+    "enableTimestamp": true,
+    "enableContext": true,
+    "enableMetadata": true,
+    "rotation": {
+      "enabled": true,
+      "schedule": "0 0 * * *"
+    },
+    "remote": {
+      "enabled": false,
+      "endpoint": null,
+      "batchSize": 10,
+      "flushInterval": 30000
+    }
+  },
+  
+  "brain": {
+    "maxConcurrentTasks": 5,
+    "learningEnabled": true,
+    "memoryRetention": 30,
+    "confidenceThreshold": 0.7,
+    "defaultMood": "neutral",
+    "moods": {
+      "neutral": { "creativity": 0.5, "precision": 0.8, "speed": 0.7 },
+      "creative": { "creativity": 0.9, "precision": 0.6, "speed": 0.6 },
+      "analytical": { "creativity": 0.3, "precision": 0.9, "speed": 0.5 },
+      "focused": { "creativity": 0.4, "precision": 0.8, "speed": 0.9 }
+    }
+  },
+  
+  "learning": {
+    "enabled": true,
+    "learningRate": 0.1,
+    "memoryWindow": 1000,
+    "adaptationThreshold": 0.8,
+    "patternMinOccurrence": 5,
+    "dataPath": "./data/learning",
+    "autoSave": true,
+    "saveInterval": 300000,
+    "strategies": {
+      "direct_generation": {
+        "enabled": true,
+        "priority": 1,
+        "complexityThreshold": 0.3
+      },
+      "iterative_refinement": {
+        "enabled": true,
+        "priority": 2,
+        "complexityThreshold": 0.7,
+        "maxIterations": 3
+      },
+      "collaborative_approach": {
+        "enabled": true,
+        "priority": 3,
+        "complexityThreshold": 0.7,
+        "maxSubtasks": 5
+      },
+      "memory_based": {
+        "enabled": true,
+        "priority": 0,
+        "similarityThreshold": 0.8
+      }
+    }
+  },
+  
+  "memory": {
+    "type": "file",
+    "path": "./data/memory",
+    "maxEntries": 10000,
+    "ttl": 2592000000,
+    "compression": true,
+    "encryption": false,
+    "indexing": {
+      "enabled": true,
+      "fields": ["type", "timestamp", "tags", "context"]
+    },
+    "cleanup": {
+      "enabled": true,
+      "schedule": "0 3 * * *",
+      "maxAge": 2592000000
+    }
+  },
+  
+  "groq": {
+    "apiKey": null,
+    "baseURL": "https://api.groq.com/openai/v1",
+    "model": "llama3-8b-8192",
+    "timeout": 30000,
+    "maxRetries": 3,
+    "retryDelay": 1000,
+    "temperature": 0.7,
+    "maxTokens": 4096,
+    "topP": 0.9,
+    "frequencyPenalty": 0,
+    "presencePenalty": 0,
+    "rateLimiting": {
+      "enabled": true,
+      "requestsPerMinute": 30,
+      "tokensPerMinute": 100000
+    }
+  },
+  
+  "generators": {
+    "react": {
+      "enabled": true,
+      "defaultProps": {
+        "typescript": false,
+        "storybook": true,
+        "tests": true,
+        "styling": "tailwind"
+      },
+      "templates": {
+        "component": "./templates/react/component.template",
+        "hook": "./templates/react/hook.template",
+        "context": "./templates/react/context.template"
+      }
+    },
+    "api": {
+      "enabled": true,
+      "defaultFramework": "express",
+      "supportedFrameworks": ["express", "fastify", "koa"],
+      "features": {
+        "authentication": true,
+        "validation": true,
+        "documentation": true,
+        "testing": true,
+        "cors": true,
+        "rateLimit": true
+      }
+    },
+    "database": {
+      "enabled": true,
+      "defaultType": "mongodb",
+      "supportedTypes": ["mongodb", "postgresql", "mysql", "sqlite"],
+      "features": {
+        "migrations": true,
+        "seeders": true,
+        "indexes": true,
+        "relations": true,
+        "validation": true
+      }
+    },
+    "docs": {
+      "enabled": true,
+      "defaultFormat": "markdown",
+      "supportedFormats": ["markdown", "html", "pdf"],
+      "features": {
+        "examples": true,
+        "diagrams": true,
+        "screenshots": false,
+        "multilingual": true
+      }
+    }
+  },
+  
+  "dashboard": {
+    "enabled": true,
+    "realTimeMetrics": true,
+    "metricsInterval": 5000,
+    "maxLogEntries": 1000,
+    "enableAPI": true,
+    "features": {
+      "codeGeneration": true,
+      "systemMonitoring": true,
+      "logViewer": true,
+      "configEditor": true,
+      "learningStats": true
+    },
+    "ui": {
+      "theme": "dark",
+      "language": "fr",
+      "autoRefresh": true,
+      "refreshInterval": 10000
+    }
+  },
+  
+  "database": {
+    "type": "mongodb",
+    "mongodb": {
+      "url": "mongodb://localhost:27017/jarvis",
+      "options": {
+        "useNewUrlParser": true,
+        "useUnifiedTopology": true,
+        "maxPoolSize": 10,
+        "serverSelectionTimeoutMS": 5000,
+        "socketTimeoutMS": 45000
+      }
+    },
+    "postgresql": {
+      "host": "localhost",
+      "port": 5432,
+      "database": "jarvis",
+      "username": "jarvis",
+      "password": null,
+      "dialect": "postgres",
+      "pool": {
+        "max": 10,
+        "min": 0,
+        "acquire": 30000,
+        "idle": 10000
+      }
+    }
+  },
+  
+  "cache": {
+    "type": "memory",
+    "ttl": 3600,
+    "maxSize": 104857600,
+    "redis": {
+      "url": "redis://localhost:6379",
+      "options": {
+        "retryDelayOnFailover": 100,
+        "enableReadyCheck": false,
+        "maxRetriesPerRequest": null
+      }
+    },
+    "file": {
+      "directory": "./data/cache",
+      "compression": true
+    }
+  },
+  
+  "security": {
+    "jwt": {
+      "secret": null,
+      "expiresIn": "24h",
+      "algorithm": "HS256"
+    },
+    "encryption": {
+      "algorithm": "aes-256-gcm",
+      "key": null
+    },
+    "bcrypt": {
+      "saltRounds": 12
+    },
+    "rateLimit": {
+      "enabled": true,
+      "windowMs": 900000,
+      "max": 100,
+      "message": "Trop de requêtes, veuillez réessayer plus tard"
+    },
+    "helmet": {
+      "contentSecurityPolicy": false,
+      "crossOriginEmbedderPolicy": false
+    }
+  },
+  
+  "storage": {
+    "dataDir": "./data",
+    "outputDir": "./output",
+    "templatesDir": "./templates",
+    "backupDir": "./backups",
+    "maxFileSize": 10485760,
+    "allowedExtensions": [".js", ".ts", ".jsx", ".tsx", ".json", ".md", ".txt", ".css", ".scss", ".html"],
+    "cleanup": {
+      "enabled": true,
+      "schedule": "0 4 * * *",
+      "maxAge": 604800000
+    }
+  },
+  
+  "monitoring": {
+    "enabled": true,
+    "metrics": {
+      "enabled": true,
+      "endpoint": "/metrics",
+      "collectInterval": 10000
+    },
+    "healthCheck": {
+      "enabled": true,
+      "endpoint": "/health",
+      "timeout": 5000
+    },
+    "performance": {
+      "enabled": true,
+      "sampleRate": 0.1,
+      "slowQueryThreshold": 1000
+    }
+  },
+  
+  "backup": {
+    "enabled": false,
+    "schedule": "0 2 * * *",
+    "retention": 7,
+    "compression": true,
+    "encryption": false,
+    "targets": ["data", "logs", "config"],
+    "storage": {
+      "type": "local",
+      "path": "./backups"
+    }
+  },
+  
+  "notifications": {
+    "enabled": false,
+    "channels": {
+      "email": {
+        "enabled": false,
+        "service": "gmail",
+        "auth": {
+          "user": null,
+          "pass": null
+        }
+      },
+      "slack": {
+        "enabled": false,
+        "webhookUrl": null
+      },
+      "discord": {
+        "enabled": false,
+        "webhookUrl": null
+      }
+    },
+    "events": {
+      "error": true,
+      "startup": false,
+      "shutdown": false,
+      "learningMilestone": true,
+      "performanceAlert": true
+    }
+  },
+  
+  "integrations": {
+    "github": {
+      "enabled": false,
+      "token": null,
+      "features": {
+        "autoCommit": false,
+        "createPR": false,
+        "syncTemplates": false
+      }
+    },
+    "storybook": {
+      "enabled": true,
+      "autoGenerate": true,
+      "port": 6006,
+      "features": {
+        "controls": true,
+        "docs": true,
+        "actions": true
+      }
+    },
+    "testing": {
+      "framework": "jest",
+      "coverage": {
+        "enabled": true,
+        "threshold": 80
+      },
+      "e2e": {
+        "enabled": false,
+        "framework": "playwright"
+      }
+    }
+  },
+  
+  "development": {
+    "hotReload": true,
+    "sourceMap": true,
+    "debugMode": true,
+    "profiling": false,
+    "mockData": true,
+    "autoRestart": true,
+    "linting": {
+      "enabled": true,
+      "rules": "recommended"
+    },
+    "formatting": {
+      "enabled": true,
+      "prettier": true
+    }
+  },
+  
+  "production": {
+    "minify": true,
+    "sourceMap": false,
+    "debugMode": false,
+    "profiling": true,
+    "clustering": {
+      "enabled": false,
+      "workers": 0
+    },
+    "ssl": {
+      "enabled": false,
+      "cert": null,
+      "key": null
+    }
+  },
+  
+  "localization": {
+    "defaultLanguage": "fr",
+    "supportedLanguages": ["fr", "en", "es", "de"],
+    "fallbackLanguage": "en",
+    "autoDetect": true,
+    "directory": "./locales"
+  },
+  
+  "analytics": {
+    "enabled": false,
+    "providers": {
+      "googleAnalytics": {
+        "enabled": false,
+        "trackingId": null
+      },
+      "mixpanel": {
+        "enabled": false,
+        "token": null
+      }
+    },
+    "events": {
+      "codeGeneration": true,
+      "userInteraction": true,
+      "performance": true,
+      "errors": true
+    }
+  },
+  
+  "experimental": {
+    "features": {
+      "aiCodeReview": false,
+      "autoOptimization": false,
+      "predictiveGeneration": false,
+      "collaborativeEditing": false
+    },
+    "labs": {
+      "enabled": false,
+      "features": []
+    }
+  }
+}
+

@@ -1,0 +1,49 @@
+{
+  "title": "Communauté",
+  "path": "/community",
+  "routes": [
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "IMPLIQUEZ-VOUS"
+    },
+    {
+      "title": "Communauté",
+      "path": "/community",
+      "skipBreadcrumb": true,
+      "routes": [
+        {
+          "title": "Conférences",
+          "path": "/community/conferences"
+        },
+        {
+          "title": "Meetups React",
+          "path": "/community/meetups"
+        },
+        {
+          "title": "Vidéos React",
+          "path": "/community/videos"
+        },
+        {
+          "title": "Rencontrez l’équipe",
+          "path": "/community/team"
+        },
+        {
+          "title": "Contributeurs aux docs",
+          "path": "/community/docs-contributors"
+        },
+        {
+          "title": "Traductions",
+          "path": "/community/translations"
+        },
+        {
+          "title": "Remerciements",
+          "path": "/community/acknowledgements"
+        },
+        {
+          "title": "Politique de versions",
+          "path": "/community/versioning-policy"
+        }
+      ]
+    }
+  ]
+}

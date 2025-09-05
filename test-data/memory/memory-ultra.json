@@ -1,0 +1,73 @@
+{
+  "memory": {
+    "generations": [
+      [
+        "mem_1757036516848_pvcyh5a8j",
+        {
+          "id": "mem_1757036516848_pvcyh5a8j",
+          "timestamp": 1757036516848,
+          "type": "generation",
+          "data": {
+            "type": "component",
+            "name": "TestButton",
+            "code": "export default function TestButton() { return <button>Test</button>; }",
+            "success": true,
+            "quality": 0.9,
+            "domain": "react"
+          },
+          "tags": [
+            "component",
+            "react"
+          ],
+          "context": {},
+          "ttl": 1759628516848
+        }
+      ]
+    ],
+    "contexts": [],
+    "patterns": [],
+    "performance": [],
+    "feedback": [],
+    "metadata": []
+  },
+  "indexes": {
+    "byType": [
+      [
+        "generation",
+        [
+          "mem_1757036516848_pvcyh5a8j"
+        ]
+      ]
+    ],
+    "byTimestamp": [
+      [
+        488065,
+        [
+          "mem_1757036516848_pvcyh5a8j"
+        ]
+      ]
+    ],
+    "byTags": [
+      [
+        "component",
+        [
+          "mem_1757036516848_pvcyh5a8j"
+        ]
+      ],
+      [
+        "react",
+        [
+          "mem_1757036516848_pvcyh5a8j"
+        ]
+      ]
+    ],
+    "byContext": []
+  },
+  "state": {
+    "isInitialized": true,
+    "lastSave": null,
+    "totalEntries": 1,
+    "memoryUsage": 0
+  },
+  "timestamp": 1757036516857
+}

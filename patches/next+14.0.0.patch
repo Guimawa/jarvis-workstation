@@ -1,0 +1,17 @@
+diff --git a/node_modules/next/dist/client/components/react-dev-overlay/internal/hooks/use-on-click-outside.js b/node_modules/next/dist/client/components/react-dev-overlay/internal/hooks/use-on-click-outside.js
+index 1234567..abcdefg 100644
+--- a/node_modules/next/dist/client/components/react-dev-overlay/internal/hooks/use-on-click-outside.js
++++ b/node_modules/next/dist/client/components/react-dev-overlay/internal/hooks/use-on-click-outside.js
+@@ -23,6 +23,6 @@ export function useOnClickOutside(el, handler) {
+         };
+         const root = el.getRootNode();
+-        root.addEventListener("mousedown", listener);
+-        root.addEventListener("touchstart", listener);
++        root.addEventListener("mousedown", listener, { passive: true });
++        root.addEventListener("touchstart", listener, { passive: true });
+         return function() {
+             root.removeEventListener("mousedown", listener);
+             root.removeEventListener("touchstart", listener);
+         };
+     }, [el, handler]);
+ }

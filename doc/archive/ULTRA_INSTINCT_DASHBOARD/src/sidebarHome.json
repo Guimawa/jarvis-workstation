@@ -1,0 +1,94 @@
+{
+  "title": "Docs React",
+  "path": "/",
+  "routes": [
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "DÉMARRAGE"
+    },
+    {
+      "title": "Démarrage rapide",
+      "path": "/learn"
+    },
+    {
+      "title": "Installation",
+      "path": "/learn/installation"
+    },
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "APPRENDRE REACT"
+    },
+    {
+      "title": "Décrire l’UI",
+      "path": "/learn/describing-the-ui"
+    },
+    {
+      "title": "Ajouter de l’interactivité",
+      "path": "/learn/adding-interactivity"
+    },
+    {
+      "title": "Gérer l'état",
+      "path": "/learn/managing-state"
+    },
+    {
+      "title": "Échappatoires",
+      "path": "/learn/escape-hatches"
+    },
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "API REACT"
+    },
+    {
+      "title": "Hooks",
+      "path": "/reference/react"
+    },
+    {
+      "title": "Composants",
+      "path": "/reference/react/components"
+    },
+    {
+      "title": "Fonctions",
+      "path": "/reference/react/apis"
+    },
+    {
+      "title": "API React historique",
+      "path": "/reference/react/legacy"
+    },
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "API REACT DOM"
+    },
+    {
+      "title": "Composants",
+      "path": "/reference/react-dom/components"
+    },
+    {
+      "title": "Fonctions",
+      "path": "/reference/react-dom"
+    },
+    {
+      "title": "Fonctions côté client",
+      "path": "/reference/react-dom/client"
+    },
+    {
+      "title": "Fonctions côté serveur",
+      "path": "/reference/react-dom/server"
+    },
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "S’IMPLIQUER"
+    },
+    {
+      "title": "Communauté React",
+      "path": "/community"
+    },
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "RESTER INFORMÉ·E"
+    },
+    {
+      "title": "Blog React",
+      "path": "/blog"
+    }
+  ]
+}

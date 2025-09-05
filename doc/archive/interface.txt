@@ -1,0 +1,544 @@
+# Create a ready-to-use React + Vite project skeleton (no internet required here).
+# We'll write the files to /mnt/data/handshake-clone and zip it for download.
+import os, json, textwrap, zipfile, pathlib, shutil
+
+base = "/mnt/data/handshake-clone"
+if os.path.exists(base):
+    shutil.rmtree(base)
+os.makedirs(base, exist_ok=True)
+
+def write(path, content):
+    p = pathlib.Path(base) / path
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(textwrap.dedent(content).lstrip(), encoding="utf-8")
+
+# package.json
+write("package.json", """
+{
+  "name": "handshake-clone",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "crypto-js": "^4.2.0",
+    "lucide-react": "^0.469.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2",
+    "recharts": "^2.12.7",
+    "zustand": "^4.5.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.41",
+    "tailwindcss": "^3.4.10",
+    "vite": "^5.4.2",
+    "vite-plugin-pwa": "^0.20.5"
+  }
+}
+""")
+
+# vite.config.js
+write("vite.config.js", """
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { VitePWA } from 'vite-plugin-pwa';
+
+export default defineConfig({
+  plugins: [
+    react(),
+    VitePWA({
+      registerType: 'autoUpdate',
+      workbox: { globPatterns: ['**/*.{js,css,html,ico,png,svg}'] },
+      manifest: {
+        name: 'Handshake Clone',
+        short_name: 'HSClone',
+        icons: [
+          { src: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+          { src: '/icon-512.png', sizes: '512x512', type: 'image/png' }
+        ],
+        start_url: '/',
+        display: 'standalone',
+        background_color: '#18181b',
+        theme_color: '#3b82f6'
+      }
+    })
+  ]
+});
+""")
+
+# tailwind + postcss
+write("tailwind.config.js", """
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50: '#fafafa', 100: '#f4f4f5', 200: '#e4e4e7',
+          500: '#71717a', 800: '#27272a', 900: '#18181b'
+        },
+        accent: { 500: '#3b82f6' }
+      },
+      fontFamily: { sans: ['Inter', 'sans-serif'] }
+    }
+  },
+  plugins: []
+}
+""")
+
+write("postcss.config.js", """
+export default {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {}
+  }
+}
+""")
+
+# index.html
+write("index.html", """
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Handshake Clone</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+""")
+
+# src main and styles
+write("src/index.css", """
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  body { @apply antialiased bg-primary-50 text-primary-800; }
+}
+""")
+
+write("src/main.jsx", """
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import './index.css'
+import App from './App.jsx'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+)
+""")
+
+write("src/App.jsx", """
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './components/layout/Layout.jsx';
+import Dashboard from './components/sections/Dashboard.jsx';
+import Vault from './components/sections/Vault.jsx';
+import RoundTable from './components/sections/RoundTable.jsx';
+import Metrics from './components/sections/Metrics.jsx';
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="vault" element={<Vault />} />
+          <Route path="roundtable" element={<RoundTable />} />
+          <Route path="metrics" element={<Metrics />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
+""")
+
+# Layout + Sidebar
+write("src/components/layout/Layout.jsx", """
+import { Outlet } from 'react-router-dom';
+import Sidebar from './Sidebar.jsx';
+
+export default function Layout() {
+  return (
+    <div className="flex h-screen bg-primary-50">
+      <Sidebar />
+      <main className="flex-1 overflow-y-auto p-6">
+        <Outlet />
+      </main>
+    </div>
+  );
+}
+""")
+
+write("src/components/layout/Sidebar.jsx", """
+import { NavLink } from 'react-router-dom';
+
+const items = [
+  { name: 'Dashboard', to: '/' },
+  { name: 'Vault', to: '/vault' },
+  { name: 'RoundTable AI', to: '/roundtable' },
+  { name: 'Metrics', to: '/metrics' }
+];
+
+export default function Sidebar() {
+  return (
+    <aside className="w-64 flex-shrink-0 bg-primary-900 text-white flex flex-col">
+      <h1 className="text-3xl font-bold px-4 pt-6 pb-8">handshake</h1>
+      <nav className="flex-1 px-4 space-y-1">
+        {items.map(i => (
+          <NavLink
+            key={i.to}
+            to={i.to}
+            className={({ isActive }) =>
+              `block py-1.5 px-2 text-sm rounded hover:bg-primary-800 ${isActive ? 'bg-primary-800' : ''}`
+            }
+            end
+          >
+            {i.name}
+          </NavLink>
+        ))}
+      </nav>
+      <div className="px-4 pb-4 text-xs text-primary-200">v0.1</div>
+    </aside>
+  );
+}
+""")
+
+# UI
+write("src/components/ui/DataTable.jsx", """
+export default function DataTable({ headers, rows }) {
+  return (
+    <table className="w-full text-sm text-left bg-white border border-primary-200 rounded">
+      <thead className="text-xs uppercase bg-primary-100">
+        <tr>
+          {headers.map(h => <th key={h} className="px-4 py-2">{h}</th>)}
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((row, idx) => (
+          <tr key={idx} className="border-t">
+            {headers.map((h, i) => (
+              <td key={i} className="px-4 py-2">{row[h]}</td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+""")
+
+write("src/components/ui/StatsCard.jsx", """
+export default function StatsCard({ label, value }) {
+  return (
+    <div className="bg-white border border-primary-200 rounded p-4">
+      <p className="text-xs text-primary-500">{label}</p>
+      <p className="text-2xl font-bold text-primary-800">{value}</p>
+    </div>
+  );
+}
+""")
+
+write("src/components/ui/SecureInput.jsx", """
+export default function SecureInput({ value, onChange, placeholder, secret = false }) {
+  return (
+    <input
+      type={secret ? 'password' : 'text'}
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      placeholder={placeholder}
+      className="w-full border border-primary-200 rounded px-3 py-1.5 text-sm focus:ring-1 focus:ring-accent-500"
+    />
+  );
+}
+""")
+
+# Store for projects (CRUD example)
+write("src/store/projectStore.js", """
+import { create } from 'zustand';
+
+export const useProjectStore = create((set) => ({
+  projects: [
+    { id: 1, Project: 'Landing Page', Status: 'In Progress', Deadline: '2025-10-05', Priority: 'High' },
+    { id: 2, Project: 'API Refactor', Status: 'Blocked',     Deadline: '2025-10-12', Priority: 'Medium' },
+    { id: 3, Project: 'Design System', Status: 'Done',        Deadline: '2025-09-30', Priority: 'Low' }
+  ],
+  addProject: (p) => set((s) => ({ projects: [...s.projects, { id: Date.now(), ...p }] })),
+  removeProject: (id) => set((s) => ({ projects: s.projects.filter(p => p.id !== id) }))
+}));
+""")
+
+# Sections
+write("src/components/sections/Dashboard.jsx", """
+import DataTable from '../ui/DataTable.jsx';
+import StatsCard from '../ui/StatsCard.jsx';
+import { useProjectStore } from '../../store/projectStore.js';
+import { useState } from 'react';
+
+const headers = ['Project', 'Status', 'Deadline', 'Priority'];
+
+export default function Dashboard() {
+  const { projects, addProject, removeProject } = useProjectStore();
+  const [form, setForm] = useState({ Project: '', Status: 'In Progress', Deadline: '', Priority: 'Medium' });
+
+  const submit = (e) => {
+    e.preventDefault();
+    if (!form.Project) return;
+    addProject(form);
+    setForm({ Project: '', Status: 'In Progress', Deadline: '', Priority: 'Medium' });
+  };
+
+  return (
+    <div>
+      <h2 className="text-xl font-semibold mb-4">Project Overview</h2>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+        <StatsCard label="Active" value={projects.filter(p=>p.Status!=='Done').length} />
+        <StatsCard label="Blocked" value={projects.filter(p=>p.Status==='Blocked').length} />
+        <StatsCard label="Completed" value={projects.filter(p=>p.Status==='Done').length} />
+        <StatsCard label="Total" value={projects.length} />
+      </div>
+
+      <form onSubmit={submit} className="bg-white border border-primary-200 rounded p-4 mb-4 grid grid-cols-1 md:grid-cols-5 gap-2">
+        <input className="border border-primary-200 rounded px-2 py-1 text-sm" placeholder="Project"
+               value={form.Project} onChange={e=>setForm({...form, Project:e.target.value})} />
+        <select className="border border-primary-200 rounded px-2 py-1 text-sm"
+                value={form.Status} onChange={e=>setForm({...form, Status:e.target.value})}>
+          <option>In Progress</option><option>Blocked</option><option>Done</option>
+        </select>
+        <input type="date" className="border border-primary-200 rounded px-2 py-1 text-sm"
+               value={form.Deadline} onChange={e=>setForm({...form, Deadline:e.target.value})} />
+        <select className="border border-primary-200 rounded px-2 py-1 text-sm"
+                value={form.Priority} onChange={e=>setForm({...form, Priority:e.target.value})}>
+          <option>Low</option><option>Medium</option><option>High</option>
+        </select>
+        <button className="px-3 py-1 bg-accent-500 text-white text-sm rounded">Add</button>
+      </form>
+
+      <DataTable headers={headers} rows={projects} />
+
+      <div className="mt-4 text-xs text-primary-500">
+        Tip: click an item to delete (quick prototype).
+      </div>
+
+      <ul className="mt-2 text-sm">
+        {projects.map(p => (
+          <li key={p.id}>
+            <button onClick={()=>removeProject(p.id)} className="underline">Delete</button> — {p.Project}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+""")
+
+# Encryption helpers + hook
+write("src/utils/encryption.js", """
+import CryptoJS from 'crypto-js';
+export const encrypt = (text, key) => CryptoJS.AES.encrypt(text, key).toString();
+export const decrypt = (cipher, key) => {
+  const bytes = CryptoJS.AES.decrypt(cipher, key);
+  return bytes.toString(CryptoJS.enc.Utf8);
+};
+""")
+
+write("src/hooks/useEncryptedStorage.js", """
+import { useState, useEffect } from 'react';
+import { encrypt, decrypt } from '../utils/encryption.js';
+
+export default function useEncryptedStorage(key, secret) {
+  const [value, setValue] = useState(null);
+
+  const setItem = (v) => {
+    const cipher = encrypt(JSON.stringify(v), secret);
+    localStorage.setItem(key, cipher);
+    setValue(v);
+  };
+
+  const getItem = () => {
+    const cipher = localStorage.getItem(key);
+    if (!cipher) return null;
+    try {
+      return JSON.parse(decrypt(cipher, secret));
+    } catch {
+      return null;
+    }
+  };
+
+  useEffect(() => {
+    setValue(getItem());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [secret]);
+
+  return [value, setItem];
+}
+""")
+
+# Vault with passphrase modal
+write("src/components/sections/Vault.jsx", """
+import { useState } from 'react';
+import useEncryptedStorage from '../../hooks/useEncryptedStorage.js';
+import SecureInput from '../ui/SecureInput.jsx';
+
+export default function Vault() {
+  const [passphrase, setPassphrase] = useState(sessionStorage.getItem('vault-pass') || '');
+  const [vault, setVault] = useEncryptedStorage('vault', passphrase || 'temporary');
+  const [label, setLabel] = useState('');
+  const [secret, setSecret] = useState('');
+
+  const setKey = () => {
+    if (!passphrase) return;
+    sessionStorage.setItem('vault-pass', passphrase);
+    window.location.reload();
+  };
+
+  const add = () => {
+    if (!label || !secret) return;
+    setVault({ ...(vault || {}), [label]: secret });
+    setLabel('');
+    setSecret('');
+  };
+
+  if (!passphrase) {
+    return (
+      <div className="max-w-sm bg-white border border-primary-200 rounded p-4">
+        <h2 className="text-xl font-semibold mb-2">Secure Vault</h2>
+        <p className="text-sm text-primary-600 mb-2">Set a passphrase (kept only in this session).</p>
+        <SecureInput value={passphrase} onChange={setPassphrase} placeholder="Passphrase" secret />
+        <button onClick={setKey} className="mt-3 px-3 py-1 bg-accent-500 text-white text-sm rounded">Unlock</button>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <h2 className="text-xl font-semibold mb-4">Secure Vault</h2>
+
+      <div className="bg-white border border-primary-200 rounded p-4 mb-4 max-w-sm">
+        <SecureInput value={label} onChange={setLabel} placeholder="Label" />
+        <SecureInput value={secret} onChange={setSecret} placeholder="Secret" secret />
+        <button onClick={add} className="mt-2 px-3 py-1 bg-accent-500 text-white text-sm rounded">
+          Add
+        </button>
+      </div>
+
+      <ul className="space-y-2">
+        {vault && Object.entries(vault).map(([k, v]) => (
+          <li key={k} className="bg-white border border-primary-200 rounded px-4 py-2 text-sm">
+            <span className="font-semibold">{k}:</span> {v}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+""")
+
+# RoundTable simulator
+write("src/utils/aiSimulator.js", """
+const personas = {
+  Strategist: "Go-to-market: start with a niche, then broaden after PMF.",
+  TechLead: "Next.js + serverless + Prisma. Ship small, iterate fast.",
+  Designer: "Monochrome UI + one accent color. Keep density high."
+};
+
+export const simulateAI = (prompt, persona) => {
+  const base = personas[persona] || "No suggestion.";
+  return `${base} (Prompt: ${prompt.slice(0, 60)}${prompt.length>60?'…':''})`;
+};
+""")
+
+write("src/components/sections/RoundTable.jsx", """
+import { useState } from 'react';
+import { simulateAI } from '../../utils/aiSimulator.js';
+
+const personas = ['Strategist', 'TechLead', 'Designer'];
+
+export default function RoundTable() {
+  const [prompt, setPrompt] = useState('');
+  const [responses, setResponses] = useState({});
+
+  const ask = () => {
+    const res = {};
+    personas.forEach(p => (res[p] = simulateAI(prompt, p)));
+    setResponses(res);
+  };
+
+  return (
+    <div>
+      <h2 className="text-xl font-semibold mb-4">AI RoundTable</h2>
+
+      <textarea
+        value={prompt}
+        onChange={(e) => setPrompt(e.target.value)}
+        placeholder="Describe your idea..."
+        className="w-full h-24 border border-primary-200 rounded p-2 text-sm"
+      />
+      <button onClick={ask} className="mt-2 px-3 py-1 bg-accent-500 text-white text-sm rounded">
+        Ask
+      </button>
+
+      {Object.entries(responses).map(([p, r]) => (
+        <div key={p} className="mt-4 bg-white border border-primary-200 rounded p-4">
+          <h3 className="font-semibold mb-1">{p}</h3>
+          <p className="text-sm text-primary-800">{r}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+""")
+
+# Metrics page
+write("src/components/sections/Metrics.jsx", """
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+
+const data = [
+  { name: 'Sep 1', views: 400 },
+  { name: 'Sep 2', views: 300 },
+  { name: 'Sep 3', views: 600 }
+];
+
+export default function Metrics() {
+  return (
+    <div>
+      <h2 className="text-xl font-semibold mb-4">Metrics</h2>
+      <div className="bg-white border border-primary-200 rounded p-4 h-80">
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={data}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Line type="monotone" dataKey="views" stroke="#3b82f6" strokeWidth={2} />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+    </div>
+  );
+}
+""")
+
+# Zip it
+zip_path = "/mnt/data/handshake-clone-starter.zip"
+with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as z:
+    for root, _, files in os.walk(base):
+        for f in files:
+            full = os.path.join(root, f)
+            z.write(full, os.path.relpath(full, base))
+
+zip_path

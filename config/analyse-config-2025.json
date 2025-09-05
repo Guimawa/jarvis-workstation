@@ -1,0 +1,62 @@
+{
+  "version": "2.0",
+  "description": "Configuration pour l'Analyse Microscopique 2025",
+  "directives": {
+    "en_cas_de_doute": "NOTER_ET_CONTINUER",
+    "rapport_doutes": true,
+    "analyse_microscopique": true,
+    "comparaison_rigoureuse": true,
+    "preservation_maitre": true,
+    "nettoyage_complet": true
+  },
+  "seuils": {
+    "utilite_ambigue_min": 5,
+    "utilite_ambigue_max": 7,
+    "differences_nombreuses": 100,
+    "dependances_excessives": 20,
+    "complexite_suspecte": 8,
+    "lignes_courtes": 50,
+    "qualite_faible": 3,
+    "utilite_elevee": 7
+  },
+  "dossiers_a_analyser": [
+    "Dashboard-Multi",
+    "jarvis-workstation",
+    "CORRECTION"
+  ],
+  "dossiers_a_ignorer": [
+    "ARCHIVE_2025",
+    "node_modules",
+    ".git",
+    "dist",
+    "build",
+    "coverage"
+  ],
+  "types_fichiers": {
+    "code": [".js", ".jsx", ".ts", ".tsx", ".py", ".java", ".cpp", ".c"],
+    "config": [".json", ".yaml", ".yml", ".xml", ".ini"],
+    "documentation": [".md", ".txt", ".rst"],
+    "styles": [".css", ".scss", ".sass", ".less"],
+    "templates": [".html", ".htm", ".vue", ".svelte"]
+  },
+  "rapports": {
+    "generer_rapport_par_fichier": true,
+    "generer_rapport_final": true,
+    "generer_rapport_doutes": true,
+    "generer_rapport_erreurs": true,
+    "inclure_contenu_complet": false,
+    "inclure_statistiques_detaillees": true
+  },
+  "archivage": {
+    "structure_organisee": true,
+    "preserver_chemin_relatif": true,
+    "generer_metadonnees": true,
+    "creer_index": true
+  },
+  "notifications": {
+    "afficher_progression": true,
+    "afficher_doutes_en_temps_reel": true,
+    "afficher_statistiques_finales": true,
+    "ouvrir_dossier_rapports": true
+  }
+}

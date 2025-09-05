@@ -1,0 +1,165 @@
+{
+  "patterns": [
+    [
+      "request_{\"type\":\"component\",\"complexity\":\"medium\",\"domain\":\"react\",\"hasCustomRequirements\":false,\"dependencyCount\":0}",
+      {
+        "pattern": {
+          "type": "component",
+          "complexity": "medium",
+          "domain": "react",
+          "hasCustomRequirements": false,
+          "dependencyCount": 0
+        },
+        "category": "request",
+        "occurrences": 1,
+        "successRate": 1,
+        "averageQuality": 0.8,
+        "averageTime": 1000,
+        "firstSeen": 1757037004157,
+        "lastSeen": 1757037004157
+      }
+    ],
+    [
+      "context_{\"domain\":\"react\",\"complexity\":0.6,\"hasSimular\":false,\"confidence\":0.9}",
+      {
+        "pattern": {
+          "domain": "react",
+          "complexity": 0.6,
+          "hasSimular": false,
+          "confidence": 0.9
+        },
+        "category": "context",
+        "occurrences": 1,
+        "successRate": 1,
+        "averageQuality": 0.8,
+        "averageTime": 1000,
+        "firstSeen": 1757037004157,
+        "lastSeen": 1757037004157
+      }
+    ],
+    [
+      "strategy_{\"strategy\":\"direct_generation\",\"success\":true,\"quality\":0.8,\"responseTime\":1000}",
+      {
+        "pattern": {
+          "strategy": "direct_generation",
+          "success": true,
+          "quality": 0.8,
+          "responseTime": 1000
+        },
+        "category": "strategy",
+        "occurrences": 3,
+        "successRate": 1,
+        "averageQuality": 0.8000000000000002,
+        "averageTime": 1000,
+        "firstSeen": 1757037004157,
+        "lastSeen": 1757037004165
+      }
+    ],
+    [
+      "temporal_{\"hour\":3,\"dayOfWeek\":5,\"isWeekend\":false}",
+      {
+        "pattern": {
+          "hour": 3,
+          "dayOfWeek": 5,
+          "isWeekend": false
+        },
+        "category": "temporal",
+        "occurrences": 3,
+        "successRate": 1,
+        "averageQuality": 0.8000000000000002,
+        "averageTime": 1000,
+        "firstSeen": 1757037004157,
+        "lastSeen": 1757037004165
+      }
+    ],
+    [
+      "request_{\"type\":\"component\",\"complexity\":\"medium\",\"domain\":\"react\",\"hasCustomRequirements\":true,\"dependencyCount\":3}",
+      {
+        "pattern": {
+          "type": "component",
+          "complexity": "medium",
+          "domain": "react",
+          "hasCustomRequirements": true,
+          "dependencyCount": 3
+        },
+        "category": "request",
+        "occurrences": 1,
+        "successRate": 1,
+        "averageQuality": 0.8,
+        "averageTime": 1000,
+        "firstSeen": 1757037004163,
+        "lastSeen": 1757037004163
+      }
+    ],
+    [
+      "context_{\"domain\":\"react\",\"complexity\":1,\"hasSimular\":true,\"confidence\":0.9}",
+      {
+        "pattern": {
+          "domain": "react",
+          "complexity": 1,
+          "hasSimular": true,
+          "confidence": 0.9
+        },
+        "category": "context",
+        "occurrences": 1,
+        "successRate": 1,
+        "averageQuality": 0.8,
+        "averageTime": 1000,
+        "firstSeen": 1757037004163,
+        "lastSeen": 1757037004163
+      }
+    ],
+    [
+      "request_{\"type\":\"invalid\",\"complexity\":\"medium\",\"domain\":\"general\",\"hasCustomRequirements\":false,\"dependencyCount\":0}",
+      {
+        "pattern": {
+          "type": "invalid",
+          "complexity": "medium",
+          "domain": "general",
+          "hasCustomRequirements": false,
+          "dependencyCount": 0
+        },
+        "category": "request",
+        "occurrences": 1,
+        "successRate": 1,
+        "averageQuality": 0.8,
+        "averageTime": 1000,
+        "firstSeen": 1757037004165,
+        "lastSeen": 1757037004165
+      }
+    ],
+    [
+      "context_{\"domain\":\"general\",\"complexity\":0.8,\"hasSimular\":false,\"confidence\":0.7}",
+      {
+        "pattern": {
+          "domain": "general",
+          "complexity": 0.8,
+          "hasSimular": false,
+          "confidence": 0.7
+        },
+        "category": "context",
+        "occurrences": 1,
+        "successRate": 1,
+        "averageQuality": 0.8,
+        "averageTime": 1000,
+        "firstSeen": 1757037004165,
+        "lastSeen": 1757037004165
+      }
+    ]
+  ],
+  "strategies": [
+    [
+      "direct_generation",
+      {
+        "successRate": 0.271,
+        "averageQuality": 0.21680000000000005,
+        "averageTime": 271,
+        "usageCount": 3,
+        "lastUsed": 1757037004165
+      }
+    ]
+  ],
+  "contexts": [],
+  "failures": [],
+  "optimizations": []
+}

@@ -1,0 +1,119 @@
+{
+  "title": "Blog",
+  "path": "/blog",
+  "routes": [
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "RESTEZ INFORMÉ·E"
+    },
+    {
+      "title": "Blog",
+      "path": "/blog",
+      "skipBreadcrumb": true,
+      "routes": [
+        {
+          "title": "React Compiler : beta et feuille de route",
+          "titleForHomepage": "React Compiler : beta et feuille de route",
+          "icon": "blog",
+          "date": "21 octobre 2024",
+          "path": "/blog/2024/10/21/react-compiler-beta-release"
+        },
+        {
+          "title": "La React Conf 2024 en bref",
+          "titleForHomepage": "La React Conf 2024 en bref",
+          "icon": "blog",
+          "date": "22 mai 2024",
+          "path": "/blog/2024/05/22/react-conf-2024-recap"
+        },
+        {
+          "title": "React 19 RC",
+          "titleForHomepage": "React 19 RC",
+          "icon": "blog",
+          "date": "25 avril 2024",
+          "path": "/blog/2024/04/25/react-19"
+        },
+        {
+          "title": "React 19 RC : guide de migration",
+          "titleForHomepage": "React 19 RC : guide de migration",
+          "icon": "blog",
+          "date": "25 avril 2024",
+          "path": "/blog/2024/04/25/react-19-upgrade-guide"
+        },
+        {
+          "title": "React Labs : ce sur quoi nous bossons – février 2024",
+          "titleForHomepage": "React Labs : février 2024",
+          "icon": "labs",
+          "date": "15 février 2024",
+          "path": "/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024"
+        },
+        {
+          "title": "React Canaries : livraison incrémentale de fonctionnalités hors de Meta",
+          "titleForHomepage": "React Canaries",
+          "icon": "blog",
+          "date": "3 mai 2023",
+          "path": "/blog/2023/05/03/react-canaries"
+        },
+        {
+          "title": "React Labs : ce sur quoi nous bossons – mars 2023",
+          "titleForHomepage": "React Labs : mars 2023",
+          "icon": "labs",
+          "date": "22 mars 2023",
+          "path": "/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023"
+        },
+        {
+          "title": "Découvrez react.dev",
+          "titleForHomepage": "Découvrez react.dev",
+          "icon": "blog",
+          "date": "16 mars 2023",
+          "path": "/blog/2023/03/16/introducing-react-dev"
+        },
+        {
+          "title": "React Labs : ce sur quoi nous bossons – juin 2022",
+          "titleForHomepage": "React Labs : juin 2022",
+          "icon": "labs",
+          "date": "15 juin 2022",
+          "path": "/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022"
+        },
+        {
+          "title": "React v18.0",
+          "titleForHomepage": "React v18.0",
+          "icon": "blog",
+          "date": "29 mars 2022",
+          "path": "/blog/2022/03/29/react-v18"
+        },
+        {
+          "title": "How to Upgrade to React 18",
+          "titleForHomepage": "Upgrading to React 18",
+          "icon": "blog",
+          "date": "8 mars 2022",
+          "path": "/blog/2022/03/08/react-18-upgrade-guide"
+        },
+        {
+          "title": "La React Conf 2021 en bref",
+          "titleForHomepage": "La React Conf 2021 en bref",
+          "icon": "blog",
+          "date": "17 décembre 2021",
+          "path": "/blog/2021/12/17/react-conf-2021-recap"
+        },
+        {
+          "title": "The Plan for React 18",
+          "titleForHomepage": "The Plan for React 18",
+          "icon": "blog",
+          "date": "8 juin 2021",
+          "path": "/blog/2021/06/08/the-plan-for-react-18"
+        },
+        {
+          "title": "Introducing Server Components",
+          "titleForHomepage": "Introducing Server Components",
+          "icon": "labs",
+          "date": "21 décembre 2020",
+          "path": "/blog/2020/12/21/data-fetching-with-react-server-components"
+        },
+        {
+          "title": "Anciens billets",
+          "path": "https://fr.legacy.reactjs.org/blog/all.html"
+        }
+      ]
+    }
+  ]
+}

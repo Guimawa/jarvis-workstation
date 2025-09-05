@@ -1,0 +1,153 @@
+{
+  "experiences": [
+    {
+      "id": "exp_1757037004157_wmlxisvfn",
+      "timestamp": 1757037004157,
+      "request": {
+        "type": "component",
+        "name": "SimpleButton",
+        "description": "Un bouton simple",
+        "domain": "react"
+      },
+      "result": {
+        "type": "generation",
+        "content": "export default function SimpleButton() {\n  return (\n    <div className=\"p-4\">\n      <h2>SimpleButton</h2>\n      <p>Un bouton simple</p>\n    </div>\n  );\n}",
+        "quality": 0.8,
+        "strategy": "direct_generation",
+        "metadata": {
+          "responseTime": 1000,
+          "tokens": 150
+        }
+      },
+      "analysis": {
+        "type": "component",
+        "complexity": 0.6,
+        "confidence": 0.8999999999999999,
+        "domain": "react",
+        "hasCustomRequirements": false,
+        "timestamp": 1757037004156,
+        "similar": []
+      },
+      "success": true,
+      "quality": 0.8,
+      "responseTime": 1000,
+      "strategy": "direct_generation"
+    },
+    {
+      "id": "exp_1757037004163_hmt0du941",
+      "timestamp": 1757037004163,
+      "request": {
+        "type": "component",
+        "name": "ComplexDashboard",
+        "description": "Un dashboard complexe avec plusieurs sections et interactions",
+        "domain": "react",
+        "customRequirements": [
+          "responsive",
+          "dark-mode",
+          "animations"
+        ],
+        "dependencies": [
+          "react-router",
+          "framer-motion",
+          "recharts"
+        ]
+      },
+      "result": {
+        "type": "generation",
+        "content": "export default function ComplexDashboard() {\n  return (\n    <div className=\"p-4\">\n      <h2>ComplexDashboard</h2>\n      <p>Un dashboard complexe avec plusieurs sections et interactions</p>\n    </div>\n  );\n}",
+        "quality": 0.8,
+        "strategy": "direct_generation",
+        "metadata": {
+          "responseTime": 1000,
+          "tokens": 150
+        }
+      },
+      "analysis": {
+        "type": "component",
+        "complexity": 1,
+        "confidence": 0.95,
+        "domain": "react",
+        "hasCustomRequirements": true,
+        "timestamp": 1757037004162,
+        "similar": [
+          {
+            "id": "mem_1757037004157_9nzl33wdf",
+            "timestamp": 1757037004157,
+            "type": "generation",
+            "data": {
+              "type": "component",
+              "name": "SimpleButton",
+              "description": "Un bouton simple",
+              "domain": "react",
+              "result": {
+                "type": "generation",
+                "content": "export default function SimpleButton() {\n  return (\n    <div className=\"p-4\">\n      <h2>SimpleButton</h2>\n      <p>Un bouton simple</p>\n    </div>\n  );\n}",
+                "quality": 0.8,
+                "strategy": "direct_generation",
+                "metadata": {
+                  "responseTime": 1000,
+                  "tokens": 150
+                }
+              },
+              "analysis": {
+                "type": "component",
+                "complexity": 0.6,
+                "confidence": 0.8999999999999999,
+                "domain": "react",
+                "hasCustomRequirements": false,
+                "timestamp": 1757037004156,
+                "similar": []
+              },
+              "strategy": "Génération Directe",
+              "success": true
+            },
+            "tags": [
+              "component",
+              "react"
+            ],
+            "context": {},
+            "ttl": 1759629004157
+          }
+        ]
+      },
+      "success": true,
+      "quality": 0.8,
+      "responseTime": 1000,
+      "strategy": "direct_generation"
+    },
+    {
+      "id": "exp_1757037004165_5x9a5rj2b",
+      "timestamp": 1757037004165,
+      "request": {
+        "type": "invalid",
+        "name": "FailingComponent",
+        "description": "Une requête qui va échouer"
+      },
+      "result": {
+        "type": "generation",
+        "content": "// Une requête qui va échouer",
+        "quality": 0.8,
+        "strategy": "direct_generation",
+        "metadata": {
+          "responseTime": 1000,
+          "tokens": 150
+        }
+      },
+      "analysis": {
+        "type": "invalid",
+        "complexity": 0.8,
+        "confidence": 0.7999999999999999,
+        "domain": "general",
+        "hasCustomRequirements": false,
+        "timestamp": 1757037004164,
+        "similar": []
+      },
+      "success": true,
+      "quality": 0.8,
+      "responseTime": 1000,
+      "strategy": "direct_generation"
+    }
+  ],
+  "adaptations": [],
+  "improvements": []
+}

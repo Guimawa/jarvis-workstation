@@ -1,0 +1,436 @@
+{
+  "title": "Référence de l’API",
+  "path": "/reference/react",
+  "routes": [
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "react@{{version}}"
+    },
+    {
+      "title": "Survol",
+      "path": "/reference/react"
+    },
+    {
+      "title": "Hooks",
+      "path": "/reference/react/hooks",
+      "routes": [
+        {
+          "title": "useActionState",
+          "path": "/reference/react/useActionState",
+          "canary": true
+        },
+        {
+          "title": "useCallback",
+          "path": "/reference/react/useCallback"
+        },
+        {
+          "title": "useContext",
+          "path": "/reference/react/useContext"
+        },
+        {
+          "title": "useDebugValue",
+          "path": "/reference/react/useDebugValue"
+        },
+        {
+          "title": "useDeferredValue",
+          "path": "/reference/react/useDeferredValue"
+        },
+        {
+          "title": "useEffect",
+          "path": "/reference/react/useEffect"
+        },
+        {
+          "title": "useId",
+          "path": "/reference/react/useId"
+        },
+        {
+          "title": "useImperativeHandle",
+          "path": "/reference/react/useImperativeHandle"
+        },
+        {
+          "title": "useInsertionEffect",
+          "path": "/reference/react/useInsertionEffect"
+        },
+        {
+          "title": "useLayoutEffect",
+          "path": "/reference/react/useLayoutEffect"
+        },
+        {
+          "title": "useMemo",
+          "path": "/reference/react/useMemo"
+        },
+        {
+          "title": "useOptimistic",
+          "path": "/reference/react/useOptimistic",
+          "canary": true
+        },
+        {
+          "title": "useReducer",
+          "path": "/reference/react/useReducer"
+        },
+        {
+          "title": "useRef",
+          "path": "/reference/react/useRef"
+        },
+        {
+          "title": "useState",
+          "path": "/reference/react/useState"
+        },
+        {
+          "title": "useSyncExternalStore",
+          "path": "/reference/react/useSyncExternalStore"
+        },
+        {
+          "title": "useTransition",
+          "path": "/reference/react/useTransition"
+        }
+      ]
+    },
+    {
+      "title": "Composants",
+      "path": "/reference/react/components",
+      "routes": [
+        {
+          "title": "<Fragment> (<>)",
+          "path": "/reference/react/Fragment"
+        },
+        {
+          "title": "<Profiler>",
+          "path": "/reference/react/Profiler"
+        },
+        {
+          "title": "<StrictMode>",
+          "path": "/reference/react/StrictMode"
+        },
+        {
+          "title": "<Suspense>",
+          "path": "/reference/react/Suspense"
+        }
+      ]
+    },
+    {
+      "title": "Fonctions",
+      "path": "/reference/react/apis",
+      "routes": [
+        {
+          "title": "act",
+          "path": "/reference/react/act"
+        },
+        {
+          "title": "cache",
+          "path": "/reference/react/cache",
+          "canary": true
+        },
+        {
+          "title": "createContext",
+          "path": "/reference/react/createContext"
+        },
+        {
+          "title": "forwardRef",
+          "path": "/reference/react/forwardRef"
+        },
+        {
+          "title": "lazy",
+          "path": "/reference/react/lazy"
+        },
+        {
+          "title": "memo",
+          "path": "/reference/react/memo"
+        },
+        {
+          "title": "startTransition",
+          "path": "/reference/react/startTransition"
+        },
+        {
+          "title": "use",
+          "path": "/reference/react/use",
+          "canary": true
+        },
+        {
+          "title": "experimental_taintObjectReference",
+          "path": "/reference/react/experimental_taintObjectReference",
+          "canary": true
+        },
+        {
+          "title": "experimental_taintUniqueValue",
+          "path": "/reference/react/experimental_taintUniqueValue",
+          "canary": true
+        }
+      ]
+    },
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "react-dom@{{version}}"
+    },
+    {
+      "title": "Hooks",
+      "path": "/reference/react-dom/hooks",
+      "routes": [
+        {
+          "title": "useFormStatus",
+          "path": "/reference/react-dom/hooks/useFormStatus",
+          "canary": true
+        }
+      ]
+    },
+    {
+      "title": "Composants",
+      "path": "/reference/react-dom/components",
+      "routes": [
+        {
+          "title": "Communs (ex. <div>)",
+          "path": "/reference/react-dom/components/common"
+        },
+        {
+          "title": "<form>",
+          "path": "/reference/react-dom/components/form",
+          "canary": true
+        },
+        {
+          "title": "<input>",
+          "path": "/reference/react-dom/components/input"
+        },
+        {
+          "title": "<option>",
+          "path": "/reference/react-dom/components/option"
+        },
+        {
+          "title": "<progress>",
+          "path": "/reference/react-dom/components/progress"
+        },
+        {
+          "title": "<select>",
+          "path": "/reference/react-dom/components/select"
+        },
+        {
+          "title": "<textarea>",
+          "path": "/reference/react-dom/components/textarea"
+        },
+        {
+          "title": "<link>",
+          "path": "/reference/react-dom/components/link",
+          "canary": true
+        },
+        {
+          "title": "<meta>",
+          "path": "/reference/react-dom/components/meta",
+          "canary": true
+        },
+        {
+          "title": "<script>",
+          "path": "/reference/react-dom/components/script",
+          "canary": true
+        },
+        {
+          "title": "<style>",
+          "path": "/reference/react-dom/components/style",
+          "canary": true
+        },
+        {
+          "title": "<title>",
+          "path": "/reference/react-dom/components/title",
+          "canary": true
+        }
+      ]
+    },
+    {
+      "title": "Fonctions",
+      "path": "/reference/react-dom",
+      "routes": [
+        {
+          "title": "createPortal",
+          "path": "/reference/react-dom/createPortal"
+        },
+        {
+          "title": "flushSync",
+          "path": "/reference/react-dom/flushSync"
+        },
+        {
+          "title": "findDOMNode",
+          "path": "/reference/react-dom/findDOMNode"
+        },
+        {
+          "title": "hydrate",
+          "path": "/reference/react-dom/hydrate"
+        },
+        {
+          "title": "preconnect",
+          "path": "/reference/react-dom/preconnect",
+          "canary": true
+        },
+        {
+          "title": "prefetchDNS",
+          "path": "/reference/react-dom/prefetchDNS",
+          "canary": true
+        },
+        {
+          "title": "preinit",
+          "path": "/reference/react-dom/preinit",
+          "canary": true
+        },
+        {
+          "title": "preinitModule",
+          "path": "/reference/react-dom/preinitModule",
+          "canary": true
+        },
+        {
+          "title": "preload",
+          "path": "/reference/react-dom/preload",
+          "canary": true
+        },
+        {
+          "title": "preloadModule",
+          "path": "/reference/react-dom/preloadModule",
+          "canary": true
+        },
+        {
+          "title": "render",
+          "path": "/reference/react-dom/render"
+        },
+        {
+          "title": "unmountComponentAtNode",
+          "path": "/reference/react-dom/unmountComponentAtNode"
+        }
+      ]
+    },
+    {
+      "title": "Fonctions côté client",
+      "path": "/reference/react-dom/client",
+      "routes": [
+        {
+          "title": "createRoot",
+          "path": "/reference/react-dom/client/createRoot"
+        },
+        {
+          "title": "hydrateRoot",
+          "path": "/reference/react-dom/client/hydrateRoot"
+        }
+      ]
+    },
+    {
+      "title": "Fonctions côté serveur",
+      "path": "/reference/react-dom/server",
+      "routes": [
+        {
+          "title": "renderToNodeStream",
+          "path": "/reference/react-dom/server/renderToNodeStream"
+        },
+        {
+          "title": "renderToPipeableStream",
+          "path": "/reference/react-dom/server/renderToPipeableStream"
+        },
+        {
+          "title": "renderToReadableStream",
+          "path": "/reference/react-dom/server/renderToReadableStream"
+        },
+        {
+          "title": "renderToStaticMarkup",
+          "path": "/reference/react-dom/server/renderToStaticMarkup"
+        },
+        {
+          "title": "renderToStaticNodeStream",
+          "path": "/reference/react-dom/server/renderToStaticNodeStream"
+        },
+        {
+          "title": "renderToString",
+          "path": "/reference/react-dom/server/renderToString"
+        }
+      ]
+    },
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "Les règles de React"
+    },
+    {
+      "title": "Aperçu",
+      "path": "/reference/rules",
+      "routes": [
+        {
+          "title": "Les composants et les Hooks doivent être des fonctions pures",
+          "path": "/reference/rules/components-and-hooks-must-be-pure"
+        },
+        {
+          "title": "React appelle les composants et les Hooks",
+          "path": "/reference/rules/react-calls-components-and-hooks"
+        },
+        {
+          "title": "Les règles des Hooks",
+          "path": "/reference/rules/rules-of-hooks"
+        }
+      ]
+    },
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "React Server Components"
+    },
+    {
+      "title": "Composants Serveur",
+      "path": "/reference/rsc/server-components",
+      "canary": true
+    },
+    {
+      "title": "Actions Serveur",
+      "path": "/reference/rsc/server-actions",
+      "canary": true
+    },
+    {
+      "title": "Directives",
+      "path": "/reference/rsc/directives",
+      "canary": true,
+      "routes": [
+        {
+          "title": "'use client'",
+          "path": "/reference/rsc/use-client",
+          "canary": true
+        },
+        {
+          "title": "'use server'",
+          "path": "/reference/rsc/use-server",
+          "canary": true
+        }
+      ]
+    },
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "API historique"
+    },
+    {
+      "title": "API React historique",
+      "path": "/reference/react/legacy",
+      "routes": [
+        {
+          "title": "Children",
+          "path": "/reference/react/Children"
+        },
+        {
+          "title": "cloneElement",
+          "path": "/reference/react/cloneElement"
+        },
+        {
+          "title": "Component",
+          "path": "/reference/react/Component"
+        },
+        {
+          "title": "createElement",
+          "path": "/reference/react/createElement"
+        },
+        {
+          "title": "createFactory",
+          "path": "/reference/react/createFactory"
+        },
+        {
+          "title": "createRef",
+          "path": "/reference/react/createRef"
+        },
+        {
+          "title": "isValidElement",
+          "path": "/reference/react/isValidElement"
+        },
+        {
+          "title": "PureComponent",
+          "path": "/reference/react/PureComponent"
+        }
+      ]
+    }
+  ]
+}
