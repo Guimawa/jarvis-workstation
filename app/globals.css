@@ -143,3 +143,196 @@ body {
     background-position: 200% 0;
   }
 }
+
+/* ======== STYLES HANDSHAKE ADVANCED ======== */
+.handshake-root {
+  background: #060B16;
+  color: #E5E7EB;
+  overflow: hidden;
+}
+
+.handshake-app {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Styles pour les composants Handshake */
+.handshake-app .btn {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.handshake-app .btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.handshake-app .input {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 13px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.handshake-app .input:focus {
+  border-color: rgba(96, 165, 250, 0.5);
+  box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.1);
+}
+
+.handshake-app .panel {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+}
+
+.handshake-app .row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.handshake-app .grid {
+  display: grid;
+  gap: 4px;
+}
+
+.handshake-app .small {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.handshake-app .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.handshake-app .item:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.handshake-app .left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  flex: 1;
+}
+
+.handshake-app .right {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.handshake-app .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.handshake-app .sep {
+  border: none;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 12px 0;
+}
+
+.handshake-app .toggle {
+  position: relative;
+  width: 32px;
+  height: 18px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+.handshake-app .toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.handshake-app .knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.handshake-app .toggle input:checked + .knob {
+  transform: translateX(14px);
+}
+
+.handshake-app .slider {
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+  cursor: pointer;
+}
+
+.handshake-app .slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #60A5FA;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(96, 165, 250, 0.3);
+}
+
+/* Glow effects pour les nodes du graph */
+.handshake-node-glow {
+  filter: drop-shadow(0 0 8px currentColor);
+}
+
+/* Animations spéciales */
+@keyframes handshakePulse {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.handshake-pulse {
+  animation: handshakePulse 2s ease-in-out infinite;
+}
+
+/* Responsive pour petit écran */
+@media (max-width: 1200px) {
+  .handshake-app {
+    font-size: 13px;
+  }
+  
+  .handshake-app .btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}
