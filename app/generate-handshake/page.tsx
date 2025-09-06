@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function GenerateHandshakePage() {
   const [userPrompt, setUserPrompt] = useState("");
-  const [generatedProject, setGeneratedProject] = useState(null);
+  const [generatedProject, setGeneratedProject] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [config, setConfig] = useState({
     name: "handshake-custom",
@@ -203,7 +203,7 @@ export default function GenerateHandshakePage() {
                 </div>
 
                 <div className="flex flex-wrap gap-2">
-                  {generatedProject.tech.map((tech, index) => (
+                  {generatedProject.tech.map((tech: any, index: number) => (
                     <span
                       key={index}
                       className="text-xs bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded"

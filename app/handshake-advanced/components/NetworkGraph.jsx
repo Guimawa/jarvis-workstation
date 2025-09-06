@@ -24,7 +24,11 @@ export default function NetworkGraph({onSelect}){
     onSelect?.({name: node.label})
   }
 
-  useEffect(()=>{ if(fg.current){ fg.current.zoom(1,400) } },[])
+  useEffect(()=>{ 
+    if(fg.current){ 
+      fg.current.zoom(1,400) 
+    } 
+  }, []) // fg.current est une ref, pas besoin dans les dépendances
 
   return (
     <div className="panel glow" style={{position:'relative',height:'100%'}}>

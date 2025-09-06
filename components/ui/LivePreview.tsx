@@ -122,7 +122,6 @@ export default function App() {
             showConsoleButton: true,
             editorHeight: "100%",
             editorWidthPercentage: 0,
-            previewHeight: "100%",
           }}
           theme="light"
           customSetup={{

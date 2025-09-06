@@ -1,29 +1,34 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
-import Sidebar from "@/components/layout/Sidebar";
-import ThemeToggle from "@/components/ui/ThemeToggle";
+import ElectronProvider from "@/components/providers/ElectronProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Jarvis Dashboard",
-  description: "IA générative de composants React",
+  title: "JARVIS Ultra Instinct - Handshake Dashboard",
+  description: "Dashboard IA complet avec interface Handshake Advanced - Version Electron",
 };
 
-export default function RootLayout({ children }) {
+<<<<<<< Current (Your changes)
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+=======
+export default function RootLayout({ 
+  children 
+}: { 
+  children: React.ReactNode;
+}) {
+>>>>>>> Incoming (Background Agent changes)
   return (
     <html lang="fr">
       <body
-        className={`${inter.className} bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-white`}
+        className={`${inter.className} electron-app handshake-root`}
       >
-        <div className="flex min-h-screen">
-          <Sidebar />
-          <main className="flex-1 p-6">{children}</main>
-        </div>
-
-        <div className="fixed bottom-4 right-4 z-50">
-          <ThemeToggle />
-        </div>
+        <ElectronProvider>
+          {/* Interface Handshake Advanced en plein écran */}
+          <div className="min-h-screen w-full">
+            {children}
+          </div>
+        </ElectronProvider>
       </body>
     </html>
   );

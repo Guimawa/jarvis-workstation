@@ -1,0 +1,5 @@
+=== SUMMARY === 
+Timestamp: 07/09/2025  0:14:18,39 
+Root: C:\Users\guima\Desktop\Dashboard IA Project\jarvis-workstation 
+Node: v24.7.0 
+NPM : 11.4.2 

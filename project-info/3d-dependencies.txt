@@ -1,0 +1,6 @@
+3D Dependencies Report
+✅ three : PRESENT 
+❌ @react-three/fiber : MANQUANT 
+❌ @react-three/drei : MANQUANT 
+❌ react-force-graph-2d : MANQUANT 
+✅ react-force-graph-3d : PRESENT 

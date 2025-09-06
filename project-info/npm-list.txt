@@ -1,0 +1,22 @@
+jarvis-ultra-instinct-light-complete@2.0.0-light-complete C:\Users\guima\Desktop\Dashboard IA Project\jarvis-workstation
++-- @types/node@20.19.12
++-- @types/react-dom@18.3.7
++-- @types/react@18.3.24
++-- autoprefixer@10.4.21
++-- axios@1.11.0
++-- class-variance-authority@0.7.1
++-- clsx@2.1.1
++-- groq-sdk@0.32.0
++-- lucide-react@0.263.1
++-- next@14.2.32
++-- postcss@8.5.6
++-- react-dom@18.3.1
++-- react-force-graph-3d@1.29.0
++-- react-is@19.1.1
++-- react@18.3.1
++-- tailwind-merge@3.3.1
++-- tailwindcss@4.1.13
++-- three-spritetext@1.10.0
++-- three@0.180.0
+`-- typescript@5.9.2
+
