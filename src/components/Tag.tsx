@@ -3,7 +3,7 @@
  */
 
 import cn from 'classnames';
-import type {RouteTag} from './Layout/getRouteMeta';
+import type {RouteTag} from '@/src/components/Layout/getRouteMeta';
 
 const variantMap = {
   foundation: {

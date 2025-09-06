@@ -9,7 +9,7 @@ import {useRouter} from 'next/router';
 import {SidebarLink} from './SidebarLink';
 import {useCollapse} from 'react-collapsed';
 import usePendingRoute from 'hooks/usePendingRoute';
-import type {RouteItem} from 'components/Layout/getRouteMeta';
+import type {RouteItem} from '@/src/components/Layout/getRouteMeta';
 import {siteConfig} from 'siteConfig';
 
 interface SidebarRouteTreeProps {

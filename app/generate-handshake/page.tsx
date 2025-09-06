@@ -6,7 +6,13 @@ import Link from "next/link";
 
 export default function GenerateHandshakePage() {
   const [userPrompt, setUserPrompt] = useState("");
-  const [generatedProject, setGeneratedProject] = useState(null);
+  const [generatedProject, setGeneratedProject] = useState<{
+    name: string;
+    description: string;
+    tech: string[];
+    preview: string;
+    source: string;
+  } | null>(null);
   const [loading, setLoading] = useState(false);
   const [config, setConfig] = useState({
     name: "handshake-custom",
@@ -195,15 +201,15 @@ export default function GenerateHandshakePage() {
               <div className="space-y-4">
                 <div>
                   <h3 className="font-semibold text-lg">
-                    {generatedProject.name}
+                    {generatedProject?.name || "Projet généré"}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    {generatedProject.description}
+                    {generatedProject?.description || "Description du projet généré"}
                   </p>
                 </div>
 
                 <div className="flex flex-wrap gap-2">
-                  {generatedProject.tech.map((tech, index) => (
+                  {generatedProject?.tech?.map((tech, index) => (
                     <span
                       key={index}
                       className="text-xs bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded"
@@ -214,13 +220,13 @@ export default function GenerateHandshakePage() {
                 </div>
 
                 <div className="flex gap-2">
-                  <Link href={generatedProject.preview}>
+                  <Link href={generatedProject?.preview || '#'}>
                     <button className="flex items-center gap-2 bg-accent-3 text-white px-4 py-2 rounded-lg hover:shadow-glow transition-all">
                       <Eye size={16} />
                       Preview
                     </button>
                   </Link>
-                  <Link href={generatedProject.source}>
+                  <Link href={generatedProject?.source || '#'}>
                     <button className="flex items-center gap-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
                       <Download size={16} />
                       Code Source

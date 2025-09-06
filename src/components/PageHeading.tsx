@@ -5,7 +5,7 @@
 import Breadcrumbs from 'components/Breadcrumbs';
 import Tag from 'components/Tag';
 import {H1} from './MDX/Heading';
-import type {RouteTag, RouteItem} from './Layout/getRouteMeta';
+import type {RouteTag, RouteItem} from '@/src/components/Layout/getRouteMeta';
 import * as React from 'react';
 import {IconCanary} from './Icon/IconCanary';
 

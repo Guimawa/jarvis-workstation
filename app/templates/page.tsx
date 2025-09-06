@@ -11,11 +11,11 @@ export default function TemplatesScreen() {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <section>
         <h2 className="text-xl font-semibold mb-4">Éditeur de Template</h2>
-        <CodeEditor onCodeChange={setCompiledCode} />
+        <CodeEditor />
       </section>
       <section>
         <h2 className="text-xl font-semibold mb-4">Aperçu Live</h2>
-        <LivePreview component={compiledCode} />
+        <LivePreview code={compiledCode} />
       </section>
     </div>
   );
