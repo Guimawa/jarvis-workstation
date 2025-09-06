@@ -1,22 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Optimisations pour le lancement rapide
-  experimental: {
-    turbo: {
-      rules: {
-        '*.svg': {
-          loaders: ['@svgr/webpack'],
-          as: '*.js',
-        },
-      },
-    },
-  },
+  // Configuration pour Electron (static export)
+  trailingSlash: true,
+  output: 'export',
+  distDir: 'out',
   
-  // Optimisation des images
+  // Désactiver l'optimisation des images pour l'export statique
   images: {
+    unoptimized: true,
     domains: ['localhost'],
     formats: ['image/webp', 'image/avif'],
   },
+  
+  // Configuration spécifique pour Electron - désactivé pour éviter les erreurs
+  // assetPrefix: process.env.NODE_ENV === 'production' ? './' : undefined,
   
   // Optimisation du build
   swcMinify: true,
@@ -53,4 +50,4 @@ const nextConfig = {
   },
 }
 
-export default nextConfig
+module.exports = nextConfig

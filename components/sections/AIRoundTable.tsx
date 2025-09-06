@@ -8,7 +8,7 @@ import { Bot, Lightbulb, Zap } from 'lucide-react';
 
 const AIRoundTable = () => {
   const [idea, setIdea] = useState('');
-  const [responses, setResponses] = useState([]);
+  const [responses, setResponses] = useState<any[]>([]);
   const [isGenerating, setIsGenerating] = useState(false);
 
   const aiPersonas = [

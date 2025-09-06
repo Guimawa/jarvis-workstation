@@ -2,15 +2,21 @@
   "name": "jarvis-ultra-instinct",
   "version": "2.0.0",
   "description": "BUREAU ULTRA INSTINCT - Dashboard IA complet avec génération de code",
-  "type": "module",
-  "main": "index.js",
+  "main": "electron-main.js",
+  "homepage": "./",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "generate": "node jarvis-cli-main.js",
-    "dashboard": "node jarvis-cli-main.js dashboard"
+    "dashboard": "node jarvis-cli-main.js dashboard",
+    "electron": "electron .",
+    "electron-dev": "concurrently \"npm run dev\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron-pack": "npm run build && npm run export && electron-builder",
+    "export": "next export",
+    "build-electron": "npm run build && npm run export && electron-builder --publish=never",
+    "dist": "npm run build && npm run export && electron-builder --publish=never"
   },
   "keywords": [
     "ai",
@@ -25,6 +31,9 @@
   "author": "Guima",
   "license": "MIT",
   "dependencies": {
+    "@babel/parser": "^7.28.4",
+    "@babel/traverse": "^7.28.4",
+    "@babel/types": "^7.28.4",
     "@codesandbox/sandpack-react": "^2.20.0",
     "@radix-ui/react-progress": "^1.1.7",
     "@radix-ui/react-switch": "^1.2.6",
@@ -39,6 +48,7 @@
     "clsx": "^2.1.1",
     "commander": "^9.4.1",
     "figlet": "^1.8.2",
+    "framer-motion": "^12.23.12",
     "groq-sdk": "^0.32.0",
     "inquirer": "^12.9.4",
     "lucide-react": "^0.263.0",
@@ -56,14 +66,82 @@
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "autoprefixer": "^10.4.21",
+    "concurrently": "^9.2.1",
+    "electron": "^38.0.0",
+    "electron-builder": "^26.0.12",
     "eslint": "^8.0.0",
     "eslint-config-next": "^14.0.0",
     "patch-package": "^8.0.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.13",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "wait-on": "^8.0.4"
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "build": {
+    "appId": "com.guimawa.jarvis-ultra-instinct",
+    "productName": "Jarvis Ultra Instinct",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "out/**/*",
+      "electron-main.js",
+      "electron-preload.js",
+      "package.json"
+    ],
+    "extraResources": [
+      "public/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "public/jarvis-icon.ico",
+      "artifactName": "Jarvis-Ultra-Instinct-Setup-${version}.${ext}",
+      "requestedExecutionLevel": "asInvoker"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "public/jarvis-icon.ico",
+      "uninstallerIcon": "public/jarvis-icon.ico",
+      "installerHeaderIcon": "public/jarvis-icon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Jarvis Ultra Instinct"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "public/jarvis-icon.icns",
+      "category": "public.app-category.developer-tools"
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "public/jarvis-icon.png",
+      "category": "Development"
+    }
   }
 }

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FolderOpen, Eye, Code, Download } from "lucide-react";
 
 export default function ProjectsPage() {
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState<any[]>([]);
 
   useEffect(() => {
     // Simuler le chargement des projets
@@ -87,7 +87,7 @@ export default function ProjectsPage() {
   );
 }
 
-function ProjectCard({ project }) {
+function ProjectCard({ project }: { project: any }) {
   const getStatusColor = () => {
     switch (project.status) {
       case "ready":
@@ -120,7 +120,7 @@ function ProjectCard({ project }) {
       </p>
 
       <div className="flex flex-wrap gap-1 mb-4">
-        {project.tech.slice(0, 3).map((tech, index) => (
+        {project.tech.slice(0, 3).map((tech: string, index: number) => (
           <span
             key={index}
             className="text-xs bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded"
