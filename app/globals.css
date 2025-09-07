@@ -37,3 +37,302 @@ body {
   background-color: #1e40af;
   color: white;
 }
+
+/* ======== STYLES SPÉCIFIQUES ELECTRON ======== */
+.electron-app {
+  -webkit-user-select: none;
+  -webkit-app-region: no-drag;
+}
+
+.electron-app main {
+  -webkit-app-region: no-drag;
+}
+
+/* Drag zone pour la barre de titre (si nécessaire) */
+.electron-titlebar {
+  -webkit-app-region: drag;
+  -webkit-user-select: none;
+  height: 30px;
+  background: var(--background);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+.electron-titlebar-buttons {
+  -webkit-app-region: no-drag;
+}
+
+/* Optimisations pour les performances Electron */
+.electron-app * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Styles pour les notifications Electron */
+.electron-notification {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+  padding: 12px 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  margin: 8px;
+  animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Curseurs personnalisés pour Electron */
+.electron-app .cursor-pointer {
+  cursor: pointer;
+}
+
+.electron-app .cursor-not-allowed {
+  cursor: not-allowed;
+}
+
+/* Scrollbars personnalisées pour Electron */
+.electron-app ::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.electron-app ::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+}
+
+.electron-app ::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+  border-radius: 6px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.electron-app ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #2563eb, #1e40af);
+  background-clip: content-box;
+}
+
+/* Loading states optimisés pour Electron */
+.electron-loading {
+  background: linear-gradient(90deg, 
+    rgba(59, 130, 246, 0.1) 0%, 
+    rgba(59, 130, 246, 0.3) 50%, 
+    rgba(59, 130, 246, 0.1) 100%);
+  background-size: 200% 100%;
+  animation: electronShimmer 1.5s infinite;
+}
+
+@keyframes electronShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* ======== STYLES HANDSHAKE ADVANCED ======== */
+.handshake-root {
+  background: #060B16;
+  color: #E5E7EB;
+  overflow: hidden;
+}
+
+.handshake-app {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Styles pour les composants Handshake */
+.handshake-app .btn {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.handshake-app .btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.handshake-app .input {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 13px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.handshake-app .input:focus {
+  border-color: rgba(96, 165, 250, 0.5);
+  box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.1);
+}
+
+.handshake-app .panel {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+}
+
+.handshake-app .row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.handshake-app .grid {
+  display: grid;
+  gap: 4px;
+}
+
+.handshake-app .small {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.handshake-app .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.handshake-app .item:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.handshake-app .left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  flex: 1;
+}
+
+.handshake-app .right {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.handshake-app .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.handshake-app .sep {
+  border: none;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 12px 0;
+}
+
+.handshake-app .toggle {
+  position: relative;
+  width: 32px;
+  height: 18px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+.handshake-app .toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.handshake-app .knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.handshake-app .toggle input:checked + .knob {
+  transform: translateX(14px);
+}
+
+.handshake-app .slider {
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+  cursor: pointer;
+}
+
+.handshake-app .slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #60A5FA;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(96, 165, 250, 0.3);
+}
+
+/* Glow effects pour les nodes du graph */
+.handshake-node-glow {
+  filter: drop-shadow(0 0 8px currentColor);
+}
+
+/* Animations spéciales */
+@keyframes handshakePulse {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.handshake-pulse {
+  animation: handshakePulse 2s ease-in-out infinite;
+}
+
+/* Responsive pour petit écran */
+@media (max-width: 1200px) {
+  .handshake-app {
+    font-size: 13px;
+  }
+  
+  .handshake-app .btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}
