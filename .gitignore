@@ -1,1 +1,50 @@
-node_modules
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editors/IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Dependencies
+node_modules/
+vendor/
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+dist-electron/
+
+# Logs and databases
+logs/
+*.log
+*.sqlite
+
+# Environment
+.env
+.env.*
+.env.local
+.env.*.local
+
+# Coverage / cache
+coverage/
+.nyc_output/
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+.cache/
+
+# Python (if any)
+__pycache__/
+*.pyc
+
+# Electron builder cache
+.electron-builder-cache/
+
+# Built binaries
+/*.exe
+/*.msi
+/*.dmg

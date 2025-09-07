@@ -353,3 +353,4 @@ Pour toute question ou problème :
 3. Testez d'abord en mode `npm run electron`
 
 **Félicitations ! Votre dashboard IA est maintenant une application native Windows complète ! 🎉**
+**Félicitations ! Votre dashboard IA est maintenant une application native Windows complète ! 🎉**

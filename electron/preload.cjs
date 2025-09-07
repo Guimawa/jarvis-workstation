@@ -116,3 +116,4 @@ contextBridge.exposeInMainWorld('CONSTANTS', {
 });
 
 console.log('🔧 JARVIS Preload - Interface sécurisée initialisée');
+console.log('🔧 JARVIS Preload - Interface sécurisée initialisée');

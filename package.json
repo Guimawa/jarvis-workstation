@@ -3,14 +3,30 @@
   "version": "2.0.0-light-complete",
   "description": "Version light complète avec interface moderne et cerveau IA intégré",
   "type": "module",
-  "main": "index.js",
+  "main": "electron/main.cjs",
+  "homepage": "./",
   "scripts": {
-    "dev": "next dev --turbo --port 3002",
+    "dev": "next dev --port 3000",
+    "start": "next start --port 3000",
     "build": "next build",
-    "start": "next start --port 3002",
-    "dev:light-complete": "next dev --turbo --port 3002",
-    "build:light-complete": "next build --experimental-build-mode=compile",
-    "lint": "next lint"
+    "export": "next export",
+    "lint": "next lint",
+    "dev:light-complete": "next dev --port 3000",
+    "build:light-complete": "next build",
+    "generate": "node scripts/jarvis-cli-main.js",
+    "dashboard": "node scripts/jarvis-cli-main.js dashboard",
+    "electron": "node scripts/start-electron-dev.cjs",
+    "electron-dev": "node scripts/start-electron-dev.cjs",
+    "build-electron": "node scripts/build-electron.cjs",
+    "build-win": "cross-env NODE_ENV=production node scripts/build-electron.cjs --platform=win32",
+    "build-win64": "cross-env NODE_ENV=production node scripts/build-electron.cjs --platform=win32 --arch=x64",
+    "build-win32": "cross-env NODE_ENV=production node scripts/build-electron.cjs --platform=win32 --arch=ia32",
+    "build-mac": "cross-env NODE_ENV=production node scripts/build-electron.cjs --platform=darwin",
+    "build-linux": "cross-env NODE_ENV=production node scripts/build-electron.cjs --platform=linux",
+    "install-deps": "npm install",
+    "setup": "npm install && echo Setup terminé !",
+    "clean": "node scripts/clean-project.cjs",
+    "clean-auto": "node scripts/clean-project.cjs --auto"
   },
   "keywords": [
     "ai",
@@ -33,22 +49,78 @@
     "next": "^14.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-force-graph-2d": "^1.25.0",
     "react-force-graph-3d": "^1.29.0",
     "react-is": "^19.1.1",
+    "react-router-dom": "^7.8.2",
+    "recharts": "^3.1.2",
     "tailwind-merge": "^3.3.1",
-    "three": "^0.180.0",
-    "three-spritetext": "^1.10.0"
+    "d3": "^7.8.5",
+    "d3-force": "^3.0.0",
+    "three": "^0.158.0"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "autoprefixer": "^10.4.21",
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1",
+    "concurrently": "^8.2.2",
+    "wait-on": "^7.2.0",
+    "cross-env": "^7.0.3",
+    "rimraf": "^5.0.5",
+    "eslint": "^8.0.0",
+    "eslint-config-next": "^14.0.0",
+    "patch-package": "^8.0.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.13",
     "typescript": "^5.0.0"
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "build": {
+    "appId": "com.guima.jarvis-ultra-instinct",
+    "productName": "JARVIS Ultra Instinct",
+    "directories": {
+      "output": "dist-electron"
+    },
+    "files": [
+      "out/**/*",
+      "electron/**/*",
+      "node_modules/**/*"
+    ],
+    "extraResources": [
+      { "from": "public/", "to": "public/" }
+    ],
+    "win": {
+      "target": [
+        { "target": "nsis", "arch": ["x64", "ia32"] },
+        { "target": "portable", "arch": ["x64", "ia32"] }
+      ],
+      "icon": "public/favicon.ico",
+      "artifactName": "JARVIS-Ultra-Instinct-${os}-${arch}-Setup-${version}.${ext}",
+      "publisherName": "JARVIS Ultra Instinct",
+      "verifyUpdateCodeSignature": false,
+      "requestedExecutionLevel": "asInvoker"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "deleteAppDataOnUninstall": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "JARVIS Ultra Instinct"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "public/icon.icns"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "public/icon.png"
+    }
   }
 }

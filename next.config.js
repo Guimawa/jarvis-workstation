@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Configuration pour Electron
+  output: process.env.NODE_ENV === 'production' ? 'export' : undefined,
+  trailingSlash: true,
+  assetPrefix: process.env.NODE_ENV === 'production' ? './' : '',
+  
   // Optimisations pour le lancement rapide
   experimental: {
     turbo: {
@@ -12,10 +17,11 @@ const nextConfig = {
     },
   },
   
-  // Optimisation des images
+  // Optimisation des images (compatible avec export statique)
   images: {
     domains: ['localhost'],
     formats: ['image/webp', 'image/avif'],
+    unoptimized: process.env.NODE_ENV === 'production'
   },
   
   // Optimisation du build
