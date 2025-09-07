@@ -6,12 +6,12 @@
   "main": "electron/main.cjs",
   "homepage": "./",
   "scripts": {
-    "dev": "next dev --port 3000",
-    "start": "next start --port 3000",
+    "dev": "next dev",
+    "start": "next start",
     "build": "next build",
     "export": "next export",
     "lint": "next lint",
-    "dev:light-complete": "next dev --port 3000",
+    "dev:light-complete": "next dev",
     "build:light-complete": "next build",
     "generate": "node scripts/jarvis-cli-main.js",
     "dashboard": "node scripts/jarvis-cli-main.js dashboard",
@@ -41,13 +41,25 @@
   "author": "Guima",
   "license": "MIT",
   "dependencies": {
+    "@codesandbox/sandpack-react": "^2.20.0",
+    "@headlessui/react": "^2.2.7",
+    "@radix-ui/react-context-menu": "^2.2.16",
+    "@radix-ui/react-progress": "^1.1.7",
+    "@radix-ui/react-switch": "^1.2.6",
+    "@radix-ui/react-tabs": "^1.1.13",
     "axios": "^1.4.0",
+    "body-scroll-lock": "^4.0.0-beta.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "d3": "^7.8.5",
+    "d3-force": "^3.0.0",
+    "debounce": "^2.2.0",
     "groq-sdk": "^0.32.0",
     "lucide-react": "^0.263.0",
     "next": "^14.0.0",
+    "parse-numeric-range": "^1.3.0",
     "react": "^18.0.0",
+    "react-collapsed": "^4.2.0",
     "react-dom": "^18.0.0",
     "react-force-graph-2d": "^1.25.0",
     "react-force-graph-3d": "^1.29.0",
@@ -55,27 +67,28 @@
     "react-router-dom": "^7.8.2",
     "recharts": "^3.1.2",
     "tailwind-merge": "^3.3.1",
-    "d3": "^7.8.5",
-    "d3-force": "^3.0.0",
     "three": "^0.158.0"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.13",
+    "@types/body-scroll-lock": "^3.1.2",
     "@types/node": "^20.0.0",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "@types/three": "^0.180.0",
     "autoprefixer": "^10.4.21",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
     "electron": "^28.0.0",
     "electron-builder": "^24.9.1",
-    "concurrently": "^8.2.2",
-    "wait-on": "^7.2.0",
-    "cross-env": "^7.0.3",
-    "rimraf": "^5.0.5",
     "eslint": "^8.0.0",
     "eslint-config-next": "^14.0.0",
     "patch-package": "^8.0.0",
     "postcss": "^8.5.6",
+    "rimraf": "^5.0.5",
     "tailwindcss": "^4.1.13",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "wait-on": "^7.2.0"
   },
   "engines": {
     "node": ">=18.0.0"
@@ -92,12 +105,27 @@
       "node_modules/**/*"
     ],
     "extraResources": [
-      { "from": "public/", "to": "public/" }
+      {
+        "from": "public/",
+        "to": "public/"
+      }
     ],
     "win": {
       "target": [
-        { "target": "nsis", "arch": ["x64", "ia32"] },
-        { "target": "portable", "arch": ["x64", "ia32"] }
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
       ],
       "icon": "public/favicon.ico",
       "artifactName": "JARVIS-Ultra-Instinct-${os}-${arch}-Setup-${version}.${ext}",

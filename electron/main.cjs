@@ -1,9 +1,40 @@
-const { app, BrowserWindow, Menu, ipcMain, dialog, shell } = require('electron');
+const electronMod = require('electron');
+const { app, BrowserWindow, Menu, ipcMain, dialog, shell, Notification } = electronMod || {};
 const path = require('path');
-const isDev = process.env.NODE_ENV === 'development';
+const fs = require('fs');
+// Consider app.isPackaged to detect dev reliably
+const isDev = process.env.NODE_ENV === 'development' || !(electronMod && electronMod.app && electronMod.app.isPackaged);
+
+if (!electronMod || !app) {
+  try {
+    console.error('Electron module not available or app is undefined. Ensure this file runs in Electron main process.');
+    console.error('electron module typeof:', typeof electronMod);
+    if (electronMod) {
+      console.error('electron module keys:', Object.keys(electronMod));
+    }
+    console.error('ELECTRON_RUN_AS_NODE:', process.env.ELECTRON_RUN_AS_NODE);
+    console.error('process.versions.electron:', process.versions && process.versions.electron);
+  } catch {}
+}
 
 // Configuration de sécurité
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
+
+// Répertoires d'exécution (cache / données) pour éviter les erreurs d'accès refusé
+try {
+  const runtimeDataDir = path.join(process.cwd(), 'user_data');
+  const runtimeCacheDir = path.join(process.cwd(), 'cache');
+  fs.mkdirSync(runtimeDataDir, { recursive: true });
+  fs.mkdirSync(runtimeCacheDir, { recursive: true });
+  if (app) {
+    app.setPath('userData', runtimeDataDir);
+    app.setPath('cache', runtimeCacheDir);
+    app.commandLine.appendSwitch('disk-cache-dir', runtimeCacheDir);
+    app.commandLine.appendSwitch('disable-gpu-shader-disk-cache');
+  }
+} catch (e) {
+  console.warn('Impossible de configurer les répertoires cache/userData:', e && e.message);
+}
 
 class JarvisElectronApp {
   constructor() {
@@ -52,8 +83,8 @@ class JarvisElectronApp {
     });
 
     // Chargement de l'application
-    const startUrl = isDev 
-      ? 'http://localhost:3000' 
+    const startUrl = isDev
+      ? (process.env.ELECTRON_START_URL || process.env.JARVIS_DEV_URL || 'http://localhost:3000')
       : `file://${path.join(__dirname, '..', 'out', 'index.html')}`;
 
     this.mainWindow.loadURL(startUrl);

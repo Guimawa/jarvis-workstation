@@ -19,7 +19,8 @@ html, body {
 }
 
 body {
-  @apply bg-gradient-to-b from-slate-900 via-blue-900 to-black text-white;
+  background: linear-gradient(180deg, #0f172a 0%, #1e3a8a 50%, #000000 100%);
+  color: #ffffff;
 }
 
 ::-webkit-scrollbar {

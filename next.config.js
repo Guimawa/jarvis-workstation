@@ -1,9 +1,13 @@
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Configuration pour Electron
   output: process.env.NODE_ENV === 'production' ? 'export' : undefined,
   trailingSlash: true,
-  assetPrefix: process.env.NODE_ENV === 'production' ? './' : '',
   
   // Optimisations pour le lancement rapide
   experimental: {
@@ -36,6 +40,15 @@ const nextConfig = {
       net: false,
       tls: false,
     };
+
+    // Alias pour éviter l'import WebGPU cassé dans three-render-objects
+    config.resolve.alias = {
+      ...(config.resolve.alias || {}),
+      'three/webgpu': path.resolve(__dirname, 'stubs/three-webgpu.js'),
+      components: path.resolve(__dirname, 'src/components'),
+      hooks: path.resolve(__dirname, 'src/hooks'),
+      siteConfig: path.resolve(__dirname, 'src/siteConfig.js')
+    };
     
     // Exclure le dossier doc/archive du build
     config.module.rules.push({
@@ -45,6 +58,8 @@ const nextConfig = {
     
     // Optimisation pour le développement
     if (dev) {
+      // Éviter les erreurs EPERM sur Windows en cache fichier
+      config.cache = { type: 'memory' };
       config.watchOptions = {
         poll: 1000,
         aggregateTimeout: 300,

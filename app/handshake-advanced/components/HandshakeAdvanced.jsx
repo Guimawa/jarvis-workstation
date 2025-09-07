@@ -6,6 +6,7 @@ import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, Tooltip, CartesianG
 
 // ====================== Force-Graph (client only) ======================
 const ForceGraph2D = dynamic(() => import("react-force-graph-2d"), { ssr: false });
+const ForceGraph3D = dynamic(() => import("react-force-graph-3d"), { ssr: false });
 
 // ------------------------------------------------------------
 // DASHBOARD "STYLE HANDSHAKE" — VERSION LIGHT MAIS FIDÈLE VISUELLEMENT
@@ -111,10 +112,25 @@ function makeProjectSatelliteNodes(project) {
 }
 
 // --- Composants UI ----------------------------------------------------------
-function TopBar({ onSearch }) {
+function TopBar({ onSearch, viewMode, setViewMode }) {
   return (
     <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-white/5 backdrop-blur-sm">
       <div className="flex items-center gap-3">
+        {/* 2D / 3D Toggle */}
+        <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-lg px-1 py-1">
+          <button
+            onClick={() => setViewMode("2D")}
+            className={`px-2 py-1 text-xs rounded-md ${viewMode === "2D" ? "bg-white/15 text-white" : "text-white/70 hover:text-white"}`}
+          >
+            2D
+          </button>
+          <button
+            onClick={() => setViewMode("3D")}
+            className={`px-2 py-1 text-xs rounded-md ${viewMode === "3D" ? "bg-white/15 text-white" : "text-white/70 hover:text-white"}`}
+          >
+            3D
+          </button>
+        </div>
         <span className="text-white/70 text-sm">Statut</span>
         <select className="bg-white/5 text-white text-sm rounded-md px-2 py-1 border border-white/10">
           <option>Tous</option>
@@ -291,12 +307,42 @@ function NetworkGraph({ graphData, focusId, onNodeClick }) {
   );
 }
 
+function NetworkGraph3DView({ graphData, focusId, onNodeClick }) {
+  const fgRef = useRef();
+
+  useEffect(() => {
+    if (!focusId || !fgRef.current) return;
+    const node = graphData.nodes.find((n) => n.id === focusId);
+    if (!node) return;
+    const distance = 120;
+    const distRatio = 1 + distance / Math.hypot(node.x || 0, node.y || 0, node.z || 0);
+    fgRef.current.cameraPosition(
+      { x: (node.x || 0) * distRatio, y: (node.y || 0) * distRatio, z: (node.z || 0) * distRatio },
+      node,
+      1500
+    );
+  }, [focusId, graphData]);
+
+  return (
+    <ForceGraph3D
+      ref={fgRef}
+      graphData={graphData}
+      backgroundColor="#060B16"
+      nodeRelSize={6}
+      linkOpacity={0.2}
+      linkColor={() => "rgba(148,163,184,0.25)"}
+      onNodeClick={onNodeClick}
+    />
+  );
+}
+
 // --- Composant principal ----------------------------------------------------
 export default function DashboardHandshakeClone() {
   const [projects] = useState(INITIAL_PROJECTS);
   const [focusId, setFocusId] = useState(null);
   const [selectedProject, setSelectedProject] = useState(projects[0]);
   const [search, setSearch] = useState("");
+  const [viewMode, setViewMode] = useState("2D");
 
   // Graph state
   const [graph, setGraph] = useState(() => {
@@ -338,12 +384,16 @@ export default function DashboardHandshakeClone() {
       <Sidebar />
 
       <div ref={containerRef} className="flex-1 flex flex-col">
-        <TopBar onSearch={setSearch} />
+        <TopBar onSearch={setSearch} viewMode={viewMode} setViewMode={setViewMode} />
 
         {/* Zone centrale: Graph + overlay subtle */}
         <div className="relative flex-1">
           <div className="absolute inset-0">
-            <NetworkGraph graphData={graph} focusId={focusId} onNodeClick={handleNodeClick} />
+            {viewMode === "2D" ? (
+              <NetworkGraph graphData={graph} focusId={focusId} onNodeClick={handleNodeClick} />
+            ) : (
+              <NetworkGraph3DView graphData={graph} focusId={focusId} onNodeClick={handleNodeClick} />
+            )}
           </div>
 
           {/* Overlay décor (rayures très subtiles) */}

@@ -29,8 +29,9 @@ export default function NetworkGraph3D({ data, focusId, onNodeClick }: Props) {
     const distance = 120; const ms = 800;
     // @ts-ignore
     fgRef.current!.cameraPosition(
-      node.x != null ? { x: node.x, y: node.y, z: (node.z||0) + distance } : { x: 0, y: 0, z: distance },
-      node, ms
+      node.x != null ? { x: node.x, y: node.y, z: (node.z || 0) + distance } : { x: 0, y: 0, z: distance },
+      { x: node.x || 0, y: node.y || 0, z: node.z || 0 },
+      ms
     );
   }, [focusId, graphData.nodes]);
 
